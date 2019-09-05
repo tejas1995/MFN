@@ -286,6 +286,207 @@ class MFN(nn.Module):
 		output = self.out_fc2(self.out_dropout(F.relu(self.out_fc1(last_hs))))
 		return output
 
+class MFNPhantom(nn.Module):
+	def __init__(self,config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig):
+		super(MFN, self).__init__()
+		[self.d_l,self.d_a,self.d_v] = config["input_dims"]
+		[self.dh_l,self.dh_a,self.dh_v] = config["h_dims"]
+		total_h_dim = self.dh_l+self.dh_a+self.dh_v
+		self.mem_dim = config["memsize"]
+		window_dim = config["windowsize"]
+		output_dim = 1
+		attInShape = total_h_dim*window_dim
+		gammaInShape = attInShape+self.mem_dim
+		final_out = total_h_dim+self.mem_dim
+		h_att1 = NN1Config["shapes"]
+		h_att2 = NN2Config["shapes"]
+		h_gamma1 = gamma1Config["shapes"]
+		h_gamma2 = gamma2Config["shapes"]
+		h_out = outConfig["shapes"]
+		att1_dropout = NN1Config["drop"]
+		att2_dropout = NN2Config["drop"]
+		gamma1_dropout = gamma1Config["drop"]
+		gamma2_dropout = gamma2Config["drop"]
+		out_dropout = outConfig["drop"]
+
+		self.lstm_l = nn.LSTMCell(self.d_l, self.dh_l)
+		self.lstm_a = nn.LSTMCell(self.d_a, self.dh_a)
+		self.lstm_v = nn.LSTMCell(self.d_v, self.dh_v)
+
+		self.phantom_v = nn.LSTMCell(self.d_l, self.d_v)
+		self.phantom_a = nn.LSTMCell(self.d_l, self.d_a)
+
+		self.att1_fc1 = nn.Linear(attInShape, h_att1)
+		self.att1_fc2 = nn.Linear(h_att1, attInShape)
+		self.att1_dropout = nn.Dropout(att1_dropout)
+
+		self.att2_fc1 = nn.Linear(attInShape, h_att2)
+		self.att2_fc2 = nn.Linear(h_att2, self.mem_dim)
+		self.att2_dropout = nn.Dropout(att2_dropout)
+
+		self.gamma1_fc1 = nn.Linear(gammaInShape, h_gamma1)
+		self.gamma1_fc2 = nn.Linear(h_gamma1, self.mem_dim)
+		self.gamma1_dropout = nn.Dropout(gamma1_dropout)
+
+		self.gamma2_fc1 = nn.Linear(gammaInShape, h_gamma2)
+		self.gamma2_fc2 = nn.Linear(h_gamma2, self.mem_dim)
+		self.gamma2_dropout = nn.Dropout(gamma2_dropout)
+
+		self.out_fc1 = nn.Linear(final_out, h_out)
+		self.out_fc2 = nn.Linear(h_out, output_dim)
+		self.out_dropout = nn.Dropout(out_dropout)
+
+		self.criterion = nn.L1Loss()
+		self.phantom_v_criterion = nn.L1Loss()
+		self.phantom_a_criterion = nn.L1Loss()
+		self.optimizer = optim.Adam(model.parameters(),lr=config["lr"])
+
+	def forward(self,x_l, x_a, x_v, isPhantom=False):
+
+		pred_x_a = x_a
+		pred_x_v = x_v
+
+		# x is t x n x d
+		n = x.shape[1]
+		t = x.shape[0]
+
+
+		if isPhatom is True:
+			self.phantom_h_a = torch.zeros(n, self.d_a).cuda()
+			self.phantom_c_a = torch.zeros(n, self.d_a).cuda()
+			x_a = self.phantom_a(x_l)
+
+			self.phantom_h_v = torch.zeros(n, self.d_v).cuda()
+			self.phantom_c_v = torch.zeros(n, self.d_v).cuda()
+			x_v = self.phantom_v(x_l)
+
+			pred_x_a = x_a
+			pred_x_v = x_v
+
+		self.h_l = torch.zeros(n, self.dh_l).cuda()
+		self.h_a = torch.zeros(n, self.dh_a).cuda()
+		self.h_v = torch.zeros(n, self.dh_v).cuda()
+		self.c_l = torch.zeros(n, self.dh_l).cuda()
+		self.c_a = torch.zeros(n, self.dh_a).cuda()
+		self.c_v = torch.zeros(n, self.dh_v).cuda()
+		self.mem = torch.zeros(n, self.mem_dim).cuda()
+
+		all_h_ls = []
+		all_h_as = []
+		all_h_vs = []
+		all_c_ls = []
+		all_c_as = []
+		all_c_vs = []
+		all_mems = []
+
+		for i in range(t):
+			# prev time step
+			prev_c_l = self.c_l
+			prev_c_a = self.c_a
+			prev_c_v = self.c_v
+			# curr time step
+			new_h_l, new_c_l = self.lstm_l(x_l[i], (self.h_l, self.c_l))
+			new_h_a, new_c_a = self.lstm_a(x_a[i], (self.h_a, self.c_a))
+			new_h_v, new_c_v = self.lstm_v(x_v[i], (self.h_v, self.c_v))
+			# concatenate
+			prev_cs = torch.cat([prev_c_l,prev_c_a,prev_c_v], dim=1)
+			new_cs = torch.cat([new_c_l,new_c_a,new_c_v], dim=1)
+			cStar = torch.cat([prev_cs,new_cs], dim=1)
+			attention = F.softmax(self.att1_fc2(self.att1_dropout(F.relu(self.att1_fc1(cStar)))),dim=1)
+			attended = attention*cStar
+			cHat = F.tanh(self.att2_fc2(self.att2_dropout(F.relu(self.att2_fc1(attended)))))
+			both = torch.cat([attended,self.mem], dim=1)
+			gamma1 = F.sigmoid(self.gamma1_fc2(self.gamma1_dropout(F.relu(self.gamma1_fc1(both)))))
+			gamma2 = F.sigmoid(self.gamma2_fc2(self.gamma2_dropout(F.relu(self.gamma2_fc1(both)))))
+			self.mem = gamma1*self.mem + gamma2*cHat
+			all_mems.append(self.mem)
+			# update
+			self.h_l, self.c_l = new_h_l, new_c_l
+			self.h_a, self.c_a = new_h_a, new_c_a
+			self.h_v, self.c_v = new_h_v, new_c_v
+			all_h_ls.append(self.h_l)
+			all_h_as.append(self.h_a)
+			all_h_vs.append(self.h_v)
+			all_c_ls.append(self.c_l)
+			all_c_as.append(self.c_a)
+			all_c_vs.append(self.c_v)
+
+		# last hidden layer last_hs is n x h
+		last_h_l = all_h_ls[-1]
+		last_h_a = all_h_as[-1]
+		last_h_v = all_h_vs[-1]
+		last_mem = all_mems[-1]
+		last_hs = torch.cat([last_h_l,last_h_a,last_h_v,last_mem], dim=1)
+		output = self.out_fc2(self.out_dropout(F.relu(self.out_fc1(last_hs))))
+		return output, pred_x_a, pred_x_v
+
+
+	def train(self, batchsize, X_train, y_train):
+		epoch_loss = 0
+		model.train()
+		total_n = X_train.shape[1]
+		num_batches = total_n / batchsize
+		for batch in xrange(num_batches):
+			start = batch*batchsize
+			end = (batch+1)*batchsize
+			self.optimizer.zero_grad()
+
+			isPhantom = True if random.random() < 0.5 else False
+
+			batch_X = torch.Tensor(X_train[:,start:end]).cuda()
+			batch_y = torch.Tensor(y_train[start:end]).cuda()
+			x_l = batch_X[:,:,:self.d_l]
+			x_a = batch_X[:,:,self.d_l:self.d_l+self.d_a]
+			x_v = batch_X[:,:,self.d_l+self.d_a:]
+
+			predictions, pred_x_a, pred_x_v = model.forward(x_l, x_a, x_v, isPhantom)
+			predictions = predictions.squeeze(1)
+
+			loss = self.criterion(predictions, batch_y)
+
+			if isPhantom is True:
+				loss += self.phantom_a_criterion(pred_x_a, x_a)
+				loss += self.phantom_v_criterion(pred_x_v, x_v)
+
+			loss.backward()
+			self.optimizer.step()
+			epoch_loss += loss.item()
+		return epoch_loss / num_batches
+
+	def evaluate(self, X_valid, y_valid):
+		epoch_loss = 0
+		model.eval()
+		with torch.no_grad():
+			batch_X = torch.Tensor(X_valid).cuda()
+			batch_y = torch.Tensor(y_valid).cuda()
+			x_l = batch_X[:,:,:self.d_l]
+			x_a = batch_X[:,:,self.d_l:self.d_l+self.d_a]
+			x_v = batch_X[:,:,self.d_l+self.d_a:]
+
+			predictions, pred_x_a, pred_x_v = model.forward(x_l, x_a, x_v, True)
+			predictions = predictions.squeeze(1)
+
+			epoch_loss = criterion(predictions, batch_y)
+			epoch_loss += self.phantom_a_criterion(pred_x_a, x_a)
+			epoch_loss += self.phantom_v_criterion(pred_x_v, x_v)
+		return epoch_loss
+
+	def predict(self, X_test):
+		epoch_loss = 0
+		model.eval()
+		with torch.no_grad():
+			batch_X = torch.Tensor(X_test).cuda()
+			x_l = batch_X[:,:,:self.d_l]
+			x_a = batch_X[:,:,self.d_l:self.d_l+self.d_a]
+			x_v = batch_X[:,:,self.d_l+self.d_a:]
+
+			predictions, _, _ = model.forward(x_l, x_a, x_v, True)
+			predictions = predictions.squeeze(1)
+			predictions = predictions.cpu().data.numpy()
+		return predictions
+
+
+
 def train_ef(X_train, y_train, X_valid, y_valid, X_test, y_test, config):
 	p = np.random.permutation(X_train.shape[0])
 	X_train = X_train[p]
@@ -503,6 +704,74 @@ def train_mfn(X_train, y_train, X_valid, y_valid, X_test, y_test, configs):
 	print "Accuracy ", accuracy_score(true_label, predicted_label)
 	sys.stdout.flush()
 
+def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, configs):
+	p = np.random.permutation(X_train.shape[0])
+	X_train = X_train[p]
+	y_train = y_train[p]
+
+	X_train = X_train.swapaxes(0,1)
+	X_valid = X_valid.swapaxes(0,1)
+	X_test = X_test.swapaxes(0,1)
+
+	d = X_train.shape[2]
+	h = 128
+	t = X_train.shape[0]
+	output_dim = 1
+	dropout = 0.5
+
+	[config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig] = configs
+
+	#model = EFLSTM(d,h,output_dim,dropout)
+	model = MFN(config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig)
+
+	#optimizer = optim.SGD(model.parameters(),lr=config["lr"],momentum=config["momentum"])
+
+	# optimizer = optim.SGD([
+	#                 {'params':model.lstm_l.parameters(), 'lr':config["lr"]},
+	#                 {'params':model.classifier.parameters(), 'lr':config["lr"]}
+	#             ], momentum=0.9)
+
+	device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+	model = model.to(device)
+
+	scheduler = ReduceLROnPlateau(optimizer,mode='min',patience=100,factor=0.5,verbose=True)
+
+
+	best_valid = 999999.0
+	rand = random.randint(0,100000)
+	for epoch in range(config["num_epochs"]):
+		train_loss = model.train(config["batchsize"], X_train, y_train)
+		valid_loss = model.evaluate(X_valid, y_valid)
+		scheduler.step(valid_loss)
+		if valid_loss <= best_valid:
+			# save model
+			best_valid = valid_loss
+			print epoch, train_loss, valid_loss, 'saving model'
+			torch.save(model, 'temp_models/mfn_%d.pt' %rand)
+		else:
+			print epoch, train_loss, valid_loss
+
+	print 'model number is:', rand
+	model = torch.load('temp_models/mfn_%d.pt' %rand)
+
+	predictions = model.predict(X_test)
+	mae = np.mean(np.absolute(predictions-y_test))
+	print "mae: ", mae
+	corr = np.corrcoef(predictions,y_test)[0][1]
+	print "corr: ", corr
+	mult = round(sum(np.round(predictions)==np.round(y_test))/float(len(y_test)),5)
+	print "mult_acc: ", mult
+	f_score = round(f1_score(np.round(predictions),np.round(y_test),average='weighted'),5)
+	print "mult f_score: ", f_score
+	true_label = (y_test >= 0)
+	predicted_label = (predictions >= 0)
+	print "Confusion Matrix :"
+	print confusion_matrix(true_label, predicted_label)
+	print "Classification Report :"
+	print classification_report(true_label, predicted_label, digits=5)
+	print "Accuracy ", accuracy_score(true_label, predicted_label)
+	sys.stdout.flush()
+
 def test(X_test, y_test, metric):
 	X_test = X_test.swapaxes(0,1)
 	def predict(model, X_test):
@@ -616,6 +885,6 @@ while True:
 	outConfig["drop"] = random.choice([0.0,0.2,0.5,0.7])
 	configs = [config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig]
 	print configs
-	train_mfn(X_train, y_train, X_valid, y_valid, X_test, y_test, configs)
+	train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, configs)
 
 
