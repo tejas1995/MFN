@@ -144,7 +144,7 @@ def load_saved_data():
 
 
 class MFNPhantom(nn.Module):
-	def __init__(self,config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig,mode):
+	def __init__(self,config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig,mode, modality_arguments):
 		super(MFNPhantom, self).__init__()
 		[self.d_l,self.d_a,self.d_v] = config["input_dims"]
 		[self.dh_l,self.dh_a,self.dh_v] = config["h_dims"]
@@ -171,8 +171,6 @@ class MFNPhantom(nn.Module):
 		self.lstm_v = nn.LSTMCell(self.d_v, self.dh_v)
 
 		self.phantom_num_layers = 3
-		self.d_v_phantom = 128
-		self.d_a_phantom = 128
 
 		self.modality_drop = config["modality_drop"]
 		self.g_loss_weight = config["g_loss_weight"]
@@ -210,16 +208,29 @@ class MFNPhantom(nn.Module):
 		self.out_dropout = nn.Dropout(out_dropout)
 
 		self.criterion = nn.L1Loss()
-		self.phantom_v_criterion = nn.L1Loss()
-		self.phantom_a_criterion = nn.L1Loss()
+		self.missing_criterion = nn.L1Loss()
+		self.phantom_criterion = nn.L1Loss()
 
 		self.mode = mode
 
+		self.missing_modality = modality_arguments[0]
+		self.phantom_modality = modality_arguments[1]
+		self.permanent_modality = modality_arguments[2]
+		self.perm2phantom_hidden = 128
+		self.perm2missing_hidden = 128
+		self.phantom2missing_hidden = 128
 
-	def forward(self,x_l, x_a, x_v, isPhantom=False, avZero=False):
+		self.input_dims = {'L': self.d_l, 'A': self.d_a, 'V': self.d_v}
+		self.perm2phantom_lstm = nn.LSTM(self.input_dims[self.permanent_modality], self.perm2phantom_hidden, num_layers=self.phantom_num_layers)
+		self.perm2phantom_ff = nn.Linear(self.perm2phantom_hidden, self.input_dims[self.phantom_modality])
+		self.perm2missing_lstm = nn.LSTM(self.input_dims[self.permanent_modality], self.perm2missing_hidden, num_layers=self.phantom_num_layers)
+		self.perm2missing_ff = nn.Linear(self.perm2missing_hidden, self.input_dims[self.missing_modality])
+		self.phantom2missing_lstm = nn.LSTM(self.input_dims[self.phantom_modality], self.phantom2missing_hidden, num_layers=self.phantom_num_layers)
+		self.phantom2missing_ff = nn.Linear(self.phantom2missing_hidden, self.input_dims[self.missing_modality])
 
-		pred_x_a = x_a
-		pred_x_v = x_v
+
+	def forward(self, x, isPhantom=False, avZero=False):
+
 
 		# x is t x n x d
 		n = x_l.shape[1]
@@ -231,19 +242,32 @@ class MFNPhantom(nn.Module):
 		#print('x_a shape:', x_a.shape)
 		#print('x_v shape:', x_v.shape)
 
+
+		x_phantom = x[self.phantom_modality]
 		if isPhantom is True:
-			self.phantom_h_a = torch.zeros(self.phantom_num_layers, n, self.d_a_phantom).cuda()
-			self.phantom_c_a = torch.zeros(self.phantom_num_layers, n, self.d_a_phantom).cuda()
-			x_a_int, _ = self.phantom_a(x_l, (self.phantom_h_a, self.phantom_c_a))
-			x_a = self.phantom_ff_a(x_a_int)
+			self.phantom_h = torch.zeros(self.phantom_num_layers, n, self.perm2phantom_hidden).cuda()
+			self.phantom_c = torch.zeros(self.phantom_num_layers, n, self.perm2phantom_hidden).cuda()
+			x_phantom_int, _ = self.perm2phantom_lstm(x[self.permanent_modality], (self.phantom_h, self.phantom_c))
+			x_phantom = self.perm2phantom_ff(x_phantom_int)
 
-			self.phantom_h_v = torch.zeros(self.phantom_num_layers, n, self.d_v_phantom).cuda()
-			self.phantom_c_v = torch.zeros(self.phantom_num_layers, n, self.d_v_phantom).cuda()
-			x_v_int, _ = self.phantom_v(x_l, (self.phantom_h_v, self.phantom_c_v))
-			x_v = self.phantom_ff_v(x_v_int)
+			x[self.phantom_modality] = x_phantom
 
-			pred_x_a = x_a
-			pred_x_v = x_v
+		self.perm2missing_h = torch.zeros(self.phantom_num_layers, n, self.perm2missing_hidden).cuda()
+		self.perm2missing_c = torch.zeros(self.phantom_num_layers, n, self.perm2missing_hidden).cuda()
+		x_perm2missing_int, _ = self.perm2missing_lstm(x[self.permanent_modality], (self.perm2missing_h, self.perm2missing_c))
+		x_perm2missing = self.perm2missing_ff(x_perm2missing_int)
+
+		self.phantom2missing_h = torch.zeros(self.phantom_num_layers, n, self.phantom2missing_hidden).cuda()
+		self.phantom2missing_c = torch.zeros(self.phantom_num_layers, n, self.phantom2missing_hidden).cuda()
+		x_phantom2missing_int, _ = self.phantom2missing_lstm(x[self.phantom_modality], (self.phantom2missing_h, self.phantom2missing_c))
+		x_phantom2missing = self.phantom2missing_ff(x_phantom2missing_int)
+
+		x_missing = torch.mean(torch.stack([x_perm2missing, x_phantom2missing], dim=-1), dim=-1)
+		x[self.missing_modality] = x_missing
+
+		x_l = x['L']
+		x_a = x['A']
+		x_v = x['V']
 
 		if avZero is True:
 			x_a = torch.zeros(x_a.shape).cuda()
@@ -305,7 +329,7 @@ class MFNPhantom(nn.Module):
 		last_mem = all_mems[-1]
 		last_hs = torch.cat([last_h_l,last_h_a,last_h_v,last_mem], dim=1)
 		output = self.out_fc2(self.out_dropout(F.relu(self.out_fc1(last_hs))))
-		return output, pred_x_a, pred_x_v
+		return output, x_missing, x_phantom
 
 	def calc_phantom_loss(self, batchsize, X_test, y_test, mode='before'):
 
@@ -364,8 +388,9 @@ class MFNPhantom(nn.Module):
 			x_l = batch_X[:,:,:self.d_l]
 			x_a = batch_X[:,:,self.d_l:self.d_l+self.d_a]
 			x_v = batch_X[:,:,self.d_l+self.d_a:]
+			x = {'L': x_l, 'A': x_a, 'V': x_v}
 
-			if self.mode in ['PhantomDG', 'PhantomD']:
+			if self.mode in ['PhantomDG', 'PhantomD', 'PhantomDG_GenModality']:
 				isPhantom = True if random.random() < self.modality_drop else False
 			else:
 				isPhantom = False
@@ -374,14 +399,15 @@ class MFNPhantom(nn.Module):
 			else:
 				avZero = False
 
-			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero)
+			predictions, x_missing, x_phantom = self.forward(x, isPhantom, avZero)
 			predictions = predictions.squeeze(1)
 
 			loss = self.criterion(predictions, batch_y)
-
-			if self.mode == 'PhantomDG':
-				loss += self.g_loss_weight*self.phantom_a_criterion(pred_x_a, x_a)
-				loss += self.g_loss_weight*self.phantom_v_criterion(pred_x_v, x_v)
+ 
+			if self.mode == 'PhantomDG_GenModality':
+				loss += self.missing_criterion(x_missing, x[self.missing_modality])
+				if isPhantom is True:
+					loss += self.g_loss_weight*self.phantom_criterion(x_phantom, x[self.phantom_modality])
 
 			loss.backward()
 			optimizer.step()
@@ -397,8 +423,9 @@ class MFNPhantom(nn.Module):
 			x_l = batch_X[:,:,:self.d_l]
 			x_a = batch_X[:,:,self.d_l:self.d_l+self.d_a]
 			x_v = batch_X[:,:,self.d_l+self.d_a:]
+			x = {'L': x_l, 'A': x_a, 'V': x_v}
 
-			if self.mode in ['PhantomDG', 'PhantomD']:
+			if self.mode in ['PhantomDG', 'PhantomD', 'PhantomDG_GenModality']:
 				isPhantom = True
 			else:
 				isPhantom = False
@@ -407,7 +434,7 @@ class MFNPhantom(nn.Module):
 			else:
 				avZero = False
 
-			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero)
+			predictions, x_missing, x_phantom = self.forward(x, isPhantom, avZero)
 			predictions = predictions.squeeze(1)
 
 			epoch_loss = self.criterion(predictions, batch_y)
@@ -421,8 +448,9 @@ class MFNPhantom(nn.Module):
 			x_l = batch_X[:,:,:self.d_l]
 			x_a = batch_X[:,:,self.d_l:self.d_l+self.d_a]
 			x_v = batch_X[:,:,self.d_l+self.d_a:]
+			x = {'L': x_l, 'A': x_a, 'V': x_v}
 
-			if self.mode in ['PhantomDG', 'PhantomD']:
+			if self.mode in ['PhantomDG', 'PhantomD', 'PhantomDG_GenModality']:
 				isPhantom = True
 			else:
 				isPhantom = False
@@ -431,14 +459,14 @@ class MFNPhantom(nn.Module):
 			else:
 				avZero = False
 
-			predictions, _, _ = self.forward(x_l, x_a, x_v, isPhantom, avZero)
+			predictions, _, _ = self.forward(x, isPhantom, avZero)
 			predictions = predictions.squeeze(1)
 			predictions = predictions.cpu().data.numpy()
 		return predictions
 
 
 
-def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, configs, mode, save_path):
+def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, configs, mode, modality_arguments, save_path):
 	p = np.random.permutation(X_train.shape[0])
 	X_train = X_train[p]
 	y_train = y_train[p]
@@ -456,7 +484,7 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 	[config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig] = configs
 
 	#model = EFLSTM(d,h,output_dim,dropout)
-	model = MFNPhantom(config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig, mode)
+	model = MFNPhantom(config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig, mode, modality_arguments)
 
 	#optimizer = optim.SGD(model.parameters(),lr=config["lr"],momentum=config["momentum"])
 
@@ -475,7 +503,7 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 	best_valid = 999999.0
 	rand = random.randint(0,100000)
 
-	model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'before')
+	# model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'before')
 
 	best_model = None
 	for epoch in range(config["num_epochs"]):
@@ -500,7 +528,7 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 	model = torch.load('{}/mfn_phantom_{}.pt'.format(save_path, args.hparam_iter))
 	#model = copy.deepcopy(best_model).cpu().gpu()
 
-	model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'after')
+	# model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'after')
 
 	for split in ['train', 'valid', 'test']:
 
@@ -606,6 +634,9 @@ parser.add_argument('--mode', type=str)
 parser.add_argument('--g_loss_weight', type=float)
 parser.add_argument('--modality_drop', type=float)
 parser.add_argument('--hparam_iter', default=0, type=int)
+parser.add_argument('--missing_modality', choices=['L','A','V'], required=True, type=str)
+parser.add_argument('--phantom_modality', choices=['L','A','V'], required=True, type=str)
+parser.add_argument('--permanent_modality', choices=['L','A','V'], required=True, type=str)
 
 args = parser.parse_args()
 
@@ -657,16 +688,28 @@ configs = [config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig]
 print configs
 
 mode = args.mode
-if mode not in ['PhantomDG', 'PhantomD', 'PhantomBlind', 'PhantomICL']:
+if mode not in ['PhantomDG', 'PhantomD', 'PhantomBlind', 'PhantomICL', 'PhantomDG_GenModality']:
 	print "Mode argument is invalid!"
 	sys.exit(0)
 
+missing_modality = args.missing_modality
+phantom_modality = args.phantom_modality
+permanent_modality = args.permanent_modality
+
+modality_arguments = [missing_modality, phantom_modality, permanent_modality]
+if 'L' not in modality_arguments or 'A' not in modality_arguments or 'V' not in modality_arguments:
+	print "Modality arguments are invalid!"
+	sys.exit(0)
+
 save_path = 'gridsearch_models/'+mode
-if mode in ['PhantomD', 'PhantomDG']:
+if mode in ['PhantomD', 'PhantomDG', 'PhantomDG_GenModality']:
 	save_path += '_D'+str(args.modality_drop)
-if mode == 'PhantomDG':
+if mode in ['PhantomDG', 'PhantomDG_GenModality']:
 	save_path += '_G'+str(args.g_loss_weight)
+if mode == 'PhantomDG_GenModality':
+	save_path += '_M'+missing_modality+'_Ph'+phantom_modality+'_Perm'+permanent_modality
 print "Save path: " + save_path
+
 
 
 # mode = 'PhantomDG'      # loss = task + avloss during training (only task during val) (phantom modality during val and test)
@@ -675,6 +718,6 @@ print "Save path: " + save_path
 # mode = 'PhantomICL'   # loss = task during training and val (ground truth inputs during training, 0 inputs during val and test)
 # mode = 'PhantomDG_GenModality' # loss = task + permanent missing modality loss + phantom modality loss (only task during val) (phantom modality during val and test)
 
-train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, configs, mode, save_path)
+train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, configs, mode, modality_arguments, save_path)
 
 

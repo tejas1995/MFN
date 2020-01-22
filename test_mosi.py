@@ -473,7 +473,7 @@ class MFNPhantom(nn.Module):
 
 		print mode, "loss a:", total_loss_a
 		print mode, "loss v:", total_loss_v
-
+		sys.exit(0)
 
 	def train_epoch(self, batchsize, X_train, y_train, optimizer):
 		epoch_loss = 0
@@ -916,21 +916,25 @@ if local:
 
 X_train, y_train, X_valid, y_valid, X_test, y_test = load_saved_data()
 
-test(X_test, y_test, 'mae')
-test(X_test, y_test, 'acc')
-assert False
-
-#config = dict()
-#config["batchsize"] = 32
-#config["num_epochs"] = 100
-#config["lr"] = 0.01
-#config["h"] = 128
-#config["drop"] = 0.5
-#train_ef(X_train, y_train, X_valid, y_valid, X_test, y_test, config)
+#test(X_test, y_test, 'mae')
+#test(X_test, y_test, 'acc')
 #assert False
 
+
 i = 0
-while i < 1:
+
+
+config = dict()
+config["input_dims"] = [300,5,20]
+config["memsize"] = 128
+config["windowsize"] = 2
+config["batchsize"] = 32
+config["num_epochs"] = 1000
+config["lr"] = 0.00001
+config["momentum"] = 0.9
+
+
+while True:
 	# mae 0.993 
 	configs = [{'input_dims': [300, 5, 20], 'batchsize': 128, 'memsize': 128, 
 	'windowsize': 2, 'lr': 0.01, 'num_epochs': 100, 'h_dims': [88, 48, 16], 'momentum': 0.9}, 
@@ -959,36 +963,37 @@ while i < 1:
 	# {'shapes': 256, 'drop': 0.5}, {'shapes': 256, 'drop': 0.5}, 
 	# {'shapes': 256, 'drop': 0.5}]
 
+
+
 	random.seed(123*i+456)
 
-	config = dict()
-	config["input_dims"] = [300,5,20]
+	network_dropout = random.choice([0.0, 0.2, 0.5])
+	modality_dropout = random.choice([0.1, 0.3, 0.5])
+
 	hl = random.choice([32,64,128,256])
 	ha = random.choice([8,32,64,80])
 	hv = random.choice([8,32,64,80])
 	config["h_dims"] = [hl,ha,hv]
-	config["memsize"] = random.choice([64,128,256,300,400])
-	config["windowsize"] = 2
-	config["batchsize"] = 64
-	config["num_epochs"] = 1000
-	config["lr"] = 0.00001
-	config["momentum"] = 0.9
+	# config["modality_drop"] = modality_dropout
+	config["modality_drop"] = 0.7
+	config["g_loss_weight"] = 0.05
 	NN1Config = dict()
-	NN1Config["shapes"] = random.choice([32,64,128,256])
-	NN1Config["drop"] = 0.5
+	NN1Config["shapes"] = random.choice([64,128,256])
+	NN1Config["drop"] = network_dropout
 	NN2Config = dict()
-	NN2Config["shapes"] = random.choice([32,64,128,256])
-	NN2Config["drop"] = 0.5
+	NN2Config["shapes"] = random.choice([64,128,256])
+	NN2Config["drop"] = network_dropout
 	gamma1Config = dict()
-	gamma1Config["shapes"] = random.choice([32,64,128,256])
-	gamma1Config["drop"] = 0.5
+	gamma1Config["shapes"] = random.choice([64,128,256])
+	gamma1Config["drop"] = network_dropout
 	gamma2Config = dict()
-	gamma2Config["shapes"] = random.choice([32,64,128,256])
-	gamma2Config["drop"] = 0.5
+	gamma2Config["shapes"] = random.choice([64,128,256])
+	gamma2Config["drop"] = network_dropout
 	outConfig = dict()
-	outConfig["shapes"] = random.choice([32, 64, 128,256])
-	outConfig["drop"] = 0.5
-	# configs = [config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig]
+	outConfig["shapes"] = random.choice([64, 128,256])
+	outConfig["drop"] = network_dropout
+
+	configs = [config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig]
 	print configs
 
 	'''

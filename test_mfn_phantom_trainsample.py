@@ -216,7 +216,7 @@ class MFNPhantom(nn.Module):
 		self.mode = mode
 
 
-	def forward(self,x_l, x_a, x_v, isPhantom=False, avZero=False):
+	def forward(self,x_l, x_a, x_v, x_a_train, x_v_train, isPhantom=False, avZero=False):
 
 		pred_x_a = x_a
 		pred_x_v = x_v
@@ -232,13 +232,13 @@ class MFNPhantom(nn.Module):
 		#print('x_v shape:', x_v.shape)
 
 		if isPhantom is True:
-			self.phantom_h_a = torch.zeros(self.phantom_num_layers, n, self.d_a_phantom).cuda()
-			self.phantom_c_a = torch.zeros(self.phantom_num_layers, n, self.d_a_phantom).cuda()
+			self.phantom_h_a = torch.zeros(self.phantom_num_layers, n, self.d_a_phantom)#.cuda()
+			self.phantom_c_a = torch.zeros(self.phantom_num_layers, n, self.d_a_phantom)#.cuda()
 			x_a_int, _ = self.phantom_a(x_l, (self.phantom_h_a, self.phantom_c_a))
 			x_a = self.phantom_ff_a(x_a_int)
 
-			self.phantom_h_v = torch.zeros(self.phantom_num_layers, n, self.d_v_phantom).cuda()
-			self.phantom_c_v = torch.zeros(self.phantom_num_layers, n, self.d_v_phantom).cuda()
+			self.phantom_h_v = torch.zeros(self.phantom_num_layers, n, self.d_v_phantom)#.cuda()
+			self.phantom_c_v = torch.zeros(self.phantom_num_layers, n, self.d_v_phantom)#.cuda()
 			x_v_int, _ = self.phantom_v(x_l, (self.phantom_h_v, self.phantom_c_v))
 			x_v = self.phantom_ff_v(x_v_int)
 
@@ -246,17 +246,63 @@ class MFNPhantom(nn.Module):
 			pred_x_v = x_v
 
 		if avZero is True:
-			x_a = torch.zeros(x_a.shape).cuda()
-			x_v = torch.zeros(x_v.shape).cuda()
+			x_a = torch.zeros(x_a.shape)#.cuda()
+			x_v = torch.zeros(x_v.shape)#.cuda()
 
+		'''
+		n = x_a.shape[1]
+		n_train = x_a_train.shape[1]
+		print "x_a shape:", x_a.shape			# (T, n, 5)
+		print "x_v shape:", x_v.shape			# (T, n, 20)
+		print "x_a_train shape:", x_a_train.shape	# (T, n, 5)
+		print "x_v_train shape:", x_v_train.shape	# (T, n, 20)
 
-		self.h_l = torch.zeros(n, self.dh_l).cuda()
-		self.h_a = torch.zeros(n, self.dh_a).cuda()
-		self.h_v = torch.zeros(n, self.dh_v).cuda()
-		self.c_l = torch.zeros(n, self.dh_l).cuda()
-		self.c_a = torch.zeros(n, self.dh_a).cuda()
-		self.c_v = torch.zeros(n, self.dh_v).cuda()
-		self.mem = torch.zeros(n, self.mem_dim).cuda()
+		x_a_train_reshaped = x_a_train.permute(2,0,1).reshape((5,-1))	# (5, T*n_t)
+		#print x_a[3][100]
+		x_a_reshaped = x_a.permute(2,0,1).reshape((5, -1)) 	# (5, T*n)
+		#print x_a_reshaped[:,787]			# x_a[i][j] = x_a_reshaped[:,i*n+j]
+		x_a = x_a_reshaped.reshape((5, 20, -1)).permute(1,2,0)
+		#print x_a[3][100]
+		x_a_reshaped = x_a_reshaped.permute(1,0)		# (T*n, 5)
+
+		similarity_scores = torch.mm(x_a_reshaped, x_a_train_reshaped)	# (n, n_t)
+		x_a_similar = torch.zeros((20, n, 5))
+		start_time = time.time()
+		for i in range(20):
+			for j in range(n):
+				sample_idx = torch.argmax(similarity_scores[i*n+j]).tolist()
+				sample_timestamp = sample_idx / n_train
+				sample_num = sample_idx % n_train
+				x_a_similar[i][j] = x_a_train[sample_timestamp][sample_num]
+
+		x_v_train_reshaped = x_v_train.permute(2,0,1).reshape((20,-1))	# (5, T*n_t)
+		x_v_reshaped = x_v.permute(2,0,1).reshape((20, -1)) 	# (5, T*n)
+		#print x_v_reshaped[:,787]			# x_v[i][j] = x_v_reshaped[:,i*n+j]
+		x_v = x_v_reshaped.reshape((20, 20, -1)).permute(1,2,0)
+		#print x_v[3][100]
+		x_v_reshaped = x_v_reshaped.permute(1,0)		# (T*n, 5)
+
+		similarity_scores = torch.mm(x_v_reshaped, x_v_train_reshaped)	# (n, n_t)
+		x_v_similar = torch.zeros((20, n, 20))
+		start_time = time.time()
+		for i in range(20):
+			for j in range(n):
+				sample_idx = torch.argmax(similarity_scores[i*n+j]).tolist()
+				sample_timestamp = sample_idx / n_train
+				sample_num = sample_idx % n_train
+				x_v_similar[i][j] = x_v_train[sample_timestamp][sample_num]
+
+		x_a = x_a_similar
+		x_v = x_v_similar
+		'''
+
+		self.h_l = torch.zeros(n, self.dh_l)#.cuda()
+		self.h_a = torch.zeros(n, self.dh_a)#.cuda()
+		self.h_v = torch.zeros(n, self.dh_v)#.cuda()
+		self.c_l = torch.zeros(n, self.dh_l)#.cuda()
+		self.c_a = torch.zeros(n, self.dh_a)#.cuda()
+		self.c_v = torch.zeros(n, self.dh_v)#.cuda()
+		self.mem = torch.zeros(n, self.mem_dim)#.cuda()
 
 		all_h_ls = []
 		all_h_as = []
@@ -413,14 +459,18 @@ class MFNPhantom(nn.Module):
 			epoch_loss = self.criterion(predictions, batch_y)
 		return epoch_loss.item()
 
-	def predict(self, X_test):
+	def predict(self, X_test, X_train):
 		epoch_loss = 0
 		self.eval()
 		with torch.no_grad():
-			batch_X = torch.Tensor(X_test).cuda()
+			batch_X = torch.Tensor(X_test)#.cuda()
 			x_l = batch_X[:,:,:self.d_l]
 			x_a = batch_X[:,:,self.d_l:self.d_l+self.d_a]
 			x_v = batch_X[:,:,self.d_l+self.d_a:]
+
+			X_train = torch.Tensor(X_train)#.cuda()
+			x_a_train = X_train[:,:,self.d_l:self.d_l+self.d_a]
+			x_v_train = X_train[:,:,self.d_l+self.d_a:]
 
 			if self.mode in ['PhantomDG', 'PhantomD']:
 				isPhantom = True
@@ -431,7 +481,7 @@ class MFNPhantom(nn.Module):
 			else:
 				avZero = False
 
-			predictions, _, _ = self.forward(x_l, x_a, x_v, isPhantom, avZero)
+			predictions, _, _ = self.forward(x_l, x_a, x_v, x_a_train, x_v_train, isPhantom, avZero)
 			predictions = predictions.squeeze(1)
 			predictions = predictions.cpu().data.numpy()
 		return predictions
@@ -475,10 +525,11 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 	best_valid = 999999.0
 	rand = random.randint(0,100000)
 
-	model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'before')
+	# model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'before')
 
 	best_model = None
 	for epoch in range(config["num_epochs"]):
+		print epoch
 		train_loss = model.train_epoch(config["batchsize"], X_train, y_train, optimizer)
 		train_loss = model.evaluate(X_train, y_train)
 		valid_loss = model.evaluate(X_valid, y_valid)
@@ -497,12 +548,12 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 
 
 	print 'model number is:', rand
-	model = torch.load('{}/mfn_phantom_{}.pt'.format(save_path, args.hparam_iter))
+	model = torch.load('{}/mfn_phantom_{}.pt'.format(save_path, args.hparam_iter), map_location=torch.device('cpu'))
 	#model = copy.deepcopy(best_model).cpu().gpu()
 
-	model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'after')
+	# model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'after')
 
-	for split in ['train', 'valid', 'test']:
+	for split in ['valid', 'test']:
 
 		if split is 'train':
 			X, y = X_train, y_train
@@ -511,7 +562,7 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 		else:
 			X, y = X_test, y_test
 
-		predictions = model.predict(X)
+		predictions = model.predict(X, X_train)
 		mae = np.mean(np.absolute(predictions-y))
 		print split, "mae: ", mae
 		corr = np.corrcoef(predictions,y)[0][1]
@@ -619,7 +670,7 @@ config["input_dims"] = [300,5,20]
 config["memsize"] = 128
 config["windowsize"] = 2
 config["batchsize"] = 32
-config["num_epochs"] = 1000
+config["num_epochs"] = 0
 config["lr"] = 0.00001
 config["momentum"] = 0.9
 

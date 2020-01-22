@@ -13,6 +13,7 @@ import torch.optim as optim
 from torch.autograd import Variable, grad
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 
+import math
 import h5py
 import time
 import data_loader as loader
@@ -122,25 +123,34 @@ def get_data(args,config):
 	return X_train, y_train, X_valid, y_valid, X_test, y_test
 
 def load_saved_data():
-	h5f = h5py.File('data/X_train.h5','r')
+	h5f = h5py.File('mosei_data/X_train.h5','r')
 	X_train = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File('data/y_train.h5','r')
+	h5f = h5py.File('mosei_data/y_train.h5','r')
 	y_train = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File('data/X_valid.h5','r')
+	h5f = h5py.File('mosei_data/X_valid.h5','r')
 	X_valid = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File('data/y_valid.h5','r')
+	h5f = h5py.File('mosei_data/y_valid.h5','r')
 	y_valid = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File('data/X_test.h5','r')
+	h5f = h5py.File('mosei_data/X_test.h5','r')
 	X_test = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File('data/y_test.h5','r')
+	h5f = h5py.File('mosei_data/y_test.h5','r')
 	y_test = h5f['data'][:]
 	h5f.close()
 	return X_train, y_train, X_valid, y_valid, X_test, y_test
+
+#parser = argparse.ArgumentParser(description='')
+#parser.add_argument('--config', default='configs/mosi.json', type=str)
+#parser.add_argument('--type', default='mgddm', type=str)	# d, gd, m1, m3
+#parser.add_argument('--fusion', default='mfn', type=str)	# ef, tf, mv, marn, mfn
+#parser.add_argument('-s', '--feature_selection', default=1, type=int, choices=[0,1], help='whether to use feature_selection')
+
+#args = parser.parse_args()
+#config = json.load(open(args.config), object_pairs_hook=OrderedDict)
 
 
 class MFNPhantom(nn.Module):
@@ -175,7 +185,6 @@ class MFNPhantom(nn.Module):
 		self.d_a_phantom = 128
 
 		self.modality_drop = config["modality_drop"]
-		self.g_loss_weight = config["g_loss_weight"]
 
 		self.phantom_v = nn.LSTM(self.d_l, self.d_v_phantom, num_layers=self.phantom_num_layers)
 		self.phantom_a = nn.LSTM(self.d_l, self.d_a_phantom, num_layers=self.phantom_num_layers)
@@ -250,6 +259,7 @@ class MFNPhantom(nn.Module):
 			x_v = torch.zeros(x_v.shape).cuda()
 
 
+
 		self.h_l = torch.zeros(n, self.dh_l).cuda()
 		self.h_a = torch.zeros(n, self.dh_a).cuda()
 		self.h_v = torch.zeros(n, self.dh_v).cuda()
@@ -309,8 +319,8 @@ class MFNPhantom(nn.Module):
 
 	def calc_phantom_loss(self, batchsize, X_test, y_test, mode='before'):
 
-		total_loss_a = [0.0]*5
-		total_loss_v = [0.0]*20
+		total_loss_a = [0.0]*74
+		total_loss_v = [0.0]*35
 
 		self.eval()
 		total_n = X_test.shape[1]
@@ -330,17 +340,17 @@ class MFNPhantom(nn.Module):
 
 			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, True)
 
-			for i in range(5):
-				total_loss_a[i] += self.phantom_a_criterion(pred_x_a[:,:,i], x_a[:,:,i]).item()/5
-			for i in range(20):
-				total_loss_v[i] += self.phantom_v_criterion(pred_x_v[:,:,i], x_v[:,:,i]).item()/20
+			for i in range(74):
+				total_loss_a[i] += self.phantom_a_criterion(pred_x_a[:,:,i], x_a[:,:,i]).item()/74
+			for i in range(35):
+				total_loss_v[i] += self.phantom_v_criterion(pred_x_v[:,:,i], x_v[:,:,i]).item()/35
 
 		audio_loss = 0.0
 		video_loss = 0.0
-		for i in range(5):
+		for i in range(74):
 			print mode, "audio loss dim", i, ":", total_loss_a[i]
 			audio_loss += total_loss_a[i]
-		for i in range(20):
+		for i in range(35):
 			print mode, "video loss dim", i, ":", total_loss_v[i]
 			video_loss += total_loss_v[i]
 
@@ -378,10 +388,18 @@ class MFNPhantom(nn.Module):
 			predictions = predictions.squeeze(1)
 
 			loss = self.criterion(predictions, batch_y)
+			torch.set_printoptions(profile="full")
+
+
 
 			if self.mode == 'PhantomDG':
-				loss += self.g_loss_weight*self.phantom_a_criterion(pred_x_a, x_a)
-				loss += self.g_loss_weight*self.phantom_v_criterion(pred_x_v, x_v)
+				loss += self.phantom_a_criterion(pred_x_a, x_a)
+				loss += self.phantom_v_criterion(pred_x_v, x_v)
+
+			#if math.isnan(loss.item()):
+				#continue
+				#print x_a[:,:,7]
+				#sys.exit(0)
 
 			loss.backward()
 			optimizer.step()
@@ -588,6 +606,10 @@ if local:
 	sys.stdout.flush()
 
 X_train, y_train, X_valid, y_valid, X_test, y_test = load_saved_data()
+X_train[X_train==float("-inf")] = 0.0
+X_valid[X_valid==float("-inf")] = 0.0
+X_test[X_test==float("-inf")] = 0.0
+
 
 #test(X_test, y_test, 'mae')
 #test(X_test, y_test, 'acc')
@@ -609,20 +631,19 @@ parser.add_argument('--hparam_iter', default=0, type=int)
 
 args = parser.parse_args()
 
-
 i = args.hparam_iter
 print "Hparam iter:", i
 
 
+
 config = dict()
-config["input_dims"] = [300,5,20]
+config["input_dims"] = [300,74,35]
 config["memsize"] = 128
 config["windowsize"] = 2
 config["batchsize"] = 32
-config["num_epochs"] = 1000
+config["num_epochs"] = 100
 config["lr"] = 0.00001
 config["momentum"] = 0.9
-
 
 random.seed(123*i+456)
 
@@ -661,7 +682,7 @@ if mode not in ['PhantomDG', 'PhantomD', 'PhantomBlind', 'PhantomICL']:
 	print "Mode argument is invalid!"
 	sys.exit(0)
 
-save_path = 'gridsearch_models/'+mode
+save_path = 'gridsearch_models_mosei/'+mode
 if mode in ['PhantomD', 'PhantomDG']:
 	save_path += '_D'+str(args.modality_drop)
 if mode == 'PhantomDG':
@@ -673,8 +694,6 @@ print "Save path: " + save_path
 # mode = 'PhantomD'     # loss = task during training and val (phantom modality during val and test)
 # mode = 'PhantomBlind' # loss = task during training and val (0 inputs during training, val and test)
 # mode = 'PhantomICL'   # loss = task during training and val (ground truth inputs during training, 0 inputs during val and test)
-# mode = 'PhantomDG_GenModality' # loss = task + permanent missing modality loss + phantom modality loss (only task during val) (phantom modality during val and test)
 
 train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, configs, mode, save_path)
-
 
