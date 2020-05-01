@@ -175,10 +175,10 @@ class MFNPhantom(nn.Module):
 		self.modality_drop = config["modality_drop"]
 		self.g_loss_weight = config["g_loss_weight"]
 
-		self.phantom_v = nn.LSTM(self.d_l, self.d_v_phantom, num_layers=self.phantom_num_layers)
-		self.phantom_a = nn.LSTM(self.d_l, self.d_a_phantom, num_layers=self.phantom_num_layers)
-		self.phantom_ff_v = nn.Linear(self.d_v_phantom, self.d_v)
-		self.phantom_ff_a = nn.Linear(self.d_a_phantom, self.d_a)
+		#self.phantom_v = nn.LSTM(self.d_l, self.d_v_phantom, num_layers=self.phantom_num_layers)
+		#self.phantom_a = nn.LSTM(self.d_l, self.d_a_phantom, num_layers=self.phantom_num_layers)
+		#self.phantom_ff_v = nn.Linear(self.d_v_phantom, self.d_v)
+		#self.phantom_ff_a = nn.Linear(self.d_a_phantom, self.d_a)
 		# Freeze params relevant to phantom acoustic and visual features
 		# x_a = x_a.detach()
 		# x_v = x_v.detach()
@@ -233,8 +233,8 @@ class MFNPhantom(nn.Module):
 
 
 		# x is t x n x d
-		n = x_l.shape[1]
-		t = x_l.shape[0]
+		n = x['L'].shape[1]
+		t = x['L'].shape[0]
 
 		#print('n:', n)
 		#print('t:', t)
@@ -709,7 +709,6 @@ if mode in ['PhantomDG', 'PhantomDG_GenModality']:
 if mode == 'PhantomDG_GenModality':
 	save_path += '_M'+missing_modality+'_Ph'+phantom_modality+'_Perm'+permanent_modality
 print "Save path: " + save_path
-
 
 
 # mode = 'PhantomDG'      # loss = task + avloss during training (only task during val) (phantom modality during val and test)

@@ -1,502 +1,502 @@
 #!/bin/bash
 
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/0 submit_single_hparam.sh 0.5 0
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/1 submit_single_hparam.sh 0.5 1
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/2 submit_single_hparam.sh 0.5 2
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/3 submit_single_hparam.sh 0.5 3
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/4 submit_single_hparam.sh 0.5 4
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/5 submit_single_hparam.sh 0.5 5
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/6 submit_single_hparam.sh 0.5 6
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/7 submit_single_hparam.sh 0.5 7
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/8 submit_single_hparam.sh 0.5 8
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/9 submit_single_hparam.sh 0.5 9
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/10 submit_single_hparam.sh 0.5 10
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/11 submit_single_hparam.sh 0.5 11
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/12 submit_single_hparam.sh 0.5 12
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/13 submit_single_hparam.sh 0.5 13
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/14 submit_single_hparam.sh 0.5 14
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/15 submit_single_hparam.sh 0.5 15
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/16 submit_single_hparam.sh 0.5 16
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/17 submit_single_hparam.sh 0.5 17
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/18 submit_single_hparam.sh 0.5 18
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/19 submit_single_hparam.sh 0.5 19
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/20 submit_single_hparam.sh 0.5 20
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/21 submit_single_hparam.sh 0.5 21
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/22 submit_single_hparam.sh 0.5 22
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/23 submit_single_hparam.sh 0.5 23
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/24 submit_single_hparam.sh 0.5 24
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/25 submit_single_hparam.sh 0.5 25
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/26 submit_single_hparam.sh 0.5 26
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/27 submit_single_hparam.sh 0.5 27
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/28 submit_single_hparam.sh 0.5 28
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/29 submit_single_hparam.sh 0.5 29
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/30 submit_single_hparam.sh 0.5 30
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/31 submit_single_hparam.sh 0.5 31
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/32 submit_single_hparam.sh 0.5 32
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/33 submit_single_hparam.sh 0.5 33
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/34 submit_single_hparam.sh 0.5 34
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/35 submit_single_hparam.sh 0.5 35
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/36 submit_single_hparam.sh 0.5 36
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/37 submit_single_hparam.sh 0.5 37
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/38 submit_single_hparam.sh 0.5 38
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/39 submit_single_hparam.sh 0.5 39
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/40 submit_single_hparam.sh 0.5 40
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/41 submit_single_hparam.sh 0.5 41
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/42 submit_single_hparam.sh 0.5 42
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/43 submit_single_hparam.sh 0.5 43
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/44 submit_single_hparam.sh 0.5 44
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/45 submit_single_hparam.sh 0.5 45
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/46 submit_single_hparam.sh 0.5 46
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/47 submit_single_hparam.sh 0.5 47
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/48 submit_single_hparam.sh 0.5 48
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/49 submit_single_hparam.sh 0.5 49
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/50 submit_single_hparam.sh 0.5 50
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/51 submit_single_hparam.sh 0.5 51
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/52 submit_single_hparam.sh 0.5 52
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/53 submit_single_hparam.sh 0.5 53
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/54 submit_single_hparam.sh 0.5 54
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/55 submit_single_hparam.sh 0.5 55
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/56 submit_single_hparam.sh 0.5 56
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/57 submit_single_hparam.sh 0.5 57
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/58 submit_single_hparam.sh 0.5 58
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/59 submit_single_hparam.sh 0.5 59
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/60 submit_single_hparam.sh 0.5 60
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/61 submit_single_hparam.sh 0.5 61
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/62 submit_single_hparam.sh 0.5 62
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/63 submit_single_hparam.sh 0.5 63
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/64 submit_single_hparam.sh 0.5 64
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/65 submit_single_hparam.sh 0.5 65
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/66 submit_single_hparam.sh 0.5 66
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/67 submit_single_hparam.sh 0.5 67
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/68 submit_single_hparam.sh 0.5 68
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/69 submit_single_hparam.sh 0.5 69
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/70 submit_single_hparam.sh 0.5 70
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/71 submit_single_hparam.sh 0.5 71
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/72 submit_single_hparam.sh 0.5 72
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/73 submit_single_hparam.sh 0.5 73
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/74 submit_single_hparam.sh 0.5 74
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/75 submit_single_hparam.sh 0.5 75
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/76 submit_single_hparam.sh 0.5 76
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/77 submit_single_hparam.sh 0.5 77
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/78 submit_single_hparam.sh 0.5 78
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/79 submit_single_hparam.sh 0.5 79
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/80 submit_single_hparam.sh 0.5 80
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/81 submit_single_hparam.sh 0.5 81
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/82 submit_single_hparam.sh 0.5 82
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/83 submit_single_hparam.sh 0.5 83
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/84 submit_single_hparam.sh 0.5 84
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/85 submit_single_hparam.sh 0.5 85
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/86 submit_single_hparam.sh 0.5 86
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/87 submit_single_hparam.sh 0.5 87
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/88 submit_single_hparam.sh 0.5 88
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/89 submit_single_hparam.sh 0.5 89
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/90 submit_single_hparam.sh 0.5 90
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/91 submit_single_hparam.sh 0.5 91
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/92 submit_single_hparam.sh 0.5 92
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/93 submit_single_hparam.sh 0.5 93
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/94 submit_single_hparam.sh 0.5 94
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/95 submit_single_hparam.sh 0.5 95
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/96 submit_single_hparam.sh 0.5 96
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/97 submit_single_hparam.sh 0.5 97
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/98 submit_single_hparam.sh 0.5 98
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/99 submit_single_hparam.sh 0.5 99
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/100 submit_single_hparam.sh 0.5 100
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/101 submit_single_hparam.sh 0.5 101
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/102 submit_single_hparam.sh 0.5 102
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/103 submit_single_hparam.sh 0.5 103
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/104 submit_single_hparam.sh 0.5 104
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/105 submit_single_hparam.sh 0.5 105
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/106 submit_single_hparam.sh 0.5 106
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/107 submit_single_hparam.sh 0.5 107
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/108 submit_single_hparam.sh 0.5 108
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/109 submit_single_hparam.sh 0.5 109
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/110 submit_single_hparam.sh 0.5 110
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/111 submit_single_hparam.sh 0.5 111
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/112 submit_single_hparam.sh 0.5 112
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/113 submit_single_hparam.sh 0.5 113
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/114 submit_single_hparam.sh 0.5 114
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/115 submit_single_hparam.sh 0.5 115
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/116 submit_single_hparam.sh 0.5 116
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/117 submit_single_hparam.sh 0.5 117
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/118 submit_single_hparam.sh 0.5 118
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/119 submit_single_hparam.sh 0.5 119
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/120 submit_single_hparam.sh 0.5 120
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/121 submit_single_hparam.sh 0.5 121
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/122 submit_single_hparam.sh 0.5 122
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/123 submit_single_hparam.sh 0.5 123
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/124 submit_single_hparam.sh 0.5 124
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/125 submit_single_hparam.sh 0.5 125
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/126 submit_single_hparam.sh 0.5 126
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/127 submit_single_hparam.sh 0.5 127
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/128 submit_single_hparam.sh 0.5 128
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/129 submit_single_hparam.sh 0.5 129
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/130 submit_single_hparam.sh 0.5 130
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/131 submit_single_hparam.sh 0.5 131
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/132 submit_single_hparam.sh 0.5 132
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/133 submit_single_hparam.sh 0.5 133
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/134 submit_single_hparam.sh 0.5 134
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/135 submit_single_hparam.sh 0.5 135
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/136 submit_single_hparam.sh 0.5 136
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/137 submit_single_hparam.sh 0.5 137
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/138 submit_single_hparam.sh 0.5 138
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/139 submit_single_hparam.sh 0.5 139
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/140 submit_single_hparam.sh 0.5 140
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/141 submit_single_hparam.sh 0.5 141
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/142 submit_single_hparam.sh 0.5 142
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/143 submit_single_hparam.sh 0.5 143
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/144 submit_single_hparam.sh 0.5 144
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/145 submit_single_hparam.sh 0.5 145
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/146 submit_single_hparam.sh 0.5 146
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/147 submit_single_hparam.sh 0.5 147
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/148 submit_single_hparam.sh 0.5 148
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/149 submit_single_hparam.sh 0.5 149
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/150 submit_single_hparam.sh 0.5 150
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/151 submit_single_hparam.sh 0.5 151
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/152 submit_single_hparam.sh 0.5 152
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/153 submit_single_hparam.sh 0.5 153
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/154 submit_single_hparam.sh 0.5 154
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/155 submit_single_hparam.sh 0.5 155
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/156 submit_single_hparam.sh 0.5 156
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/157 submit_single_hparam.sh 0.5 157
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/158 submit_single_hparam.sh 0.5 158
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/159 submit_single_hparam.sh 0.5 159
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/160 submit_single_hparam.sh 0.5 160
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/161 submit_single_hparam.sh 0.5 161
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/162 submit_single_hparam.sh 0.5 162
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/163 submit_single_hparam.sh 0.5 163
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/164 submit_single_hparam.sh 0.5 164
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/165 submit_single_hparam.sh 0.5 165
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/166 submit_single_hparam.sh 0.5 166
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/167 submit_single_hparam.sh 0.5 167
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/168 submit_single_hparam.sh 0.5 168
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/169 submit_single_hparam.sh 0.5 169
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/170 submit_single_hparam.sh 0.5 170
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/171 submit_single_hparam.sh 0.5 171
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/172 submit_single_hparam.sh 0.5 172
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/173 submit_single_hparam.sh 0.5 173
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/174 submit_single_hparam.sh 0.5 174
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/175 submit_single_hparam.sh 0.5 175
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/176 submit_single_hparam.sh 0.5 176
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/177 submit_single_hparam.sh 0.5 177
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/178 submit_single_hparam.sh 0.5 178
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/179 submit_single_hparam.sh 0.5 179
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/180 submit_single_hparam.sh 0.5 180
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/181 submit_single_hparam.sh 0.5 181
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/182 submit_single_hparam.sh 0.5 182
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/183 submit_single_hparam.sh 0.5 183
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/184 submit_single_hparam.sh 0.5 184
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/185 submit_single_hparam.sh 0.5 185
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/186 submit_single_hparam.sh 0.5 186
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/187 submit_single_hparam.sh 0.5 187
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/188 submit_single_hparam.sh 0.5 188
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/189 submit_single_hparam.sh 0.5 189
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/190 submit_single_hparam.sh 0.5 190
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/191 submit_single_hparam.sh 0.5 191
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/192 submit_single_hparam.sh 0.5 192
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/193 submit_single_hparam.sh 0.5 193
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/194 submit_single_hparam.sh 0.5 194
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/195 submit_single_hparam.sh 0.5 195
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/196 submit_single_hparam.sh 0.5 196
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/197 submit_single_hparam.sh 0.5 197
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/198 submit_single_hparam.sh 0.5 198
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/199 submit_single_hparam.sh 0.5 199
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/200 submit_single_hparam.sh 0.5 200
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/201 submit_single_hparam.sh 0.5 201
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/202 submit_single_hparam.sh 0.5 202
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/203 submit_single_hparam.sh 0.5 203
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/204 submit_single_hparam.sh 0.5 204
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/205 submit_single_hparam.sh 0.5 205
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/206 submit_single_hparam.sh 0.5 206
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/207 submit_single_hparam.sh 0.5 207
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/208 submit_single_hparam.sh 0.5 208
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/209 submit_single_hparam.sh 0.5 209
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/210 submit_single_hparam.sh 0.5 210
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/211 submit_single_hparam.sh 0.5 211
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/212 submit_single_hparam.sh 0.5 212
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/213 submit_single_hparam.sh 0.5 213
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/214 submit_single_hparam.sh 0.5 214
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/215 submit_single_hparam.sh 0.5 215
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/216 submit_single_hparam.sh 0.5 216
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/217 submit_single_hparam.sh 0.5 217
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/218 submit_single_hparam.sh 0.5 218
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/219 submit_single_hparam.sh 0.5 219
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/220 submit_single_hparam.sh 0.5 220
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/221 submit_single_hparam.sh 0.5 221
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/222 submit_single_hparam.sh 0.5 222
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/223 submit_single_hparam.sh 0.5 223
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/224 submit_single_hparam.sh 0.5 224
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/225 submit_single_hparam.sh 0.5 225
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/226 submit_single_hparam.sh 0.5 226
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/227 submit_single_hparam.sh 0.5 227
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/228 submit_single_hparam.sh 0.5 228
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/229 submit_single_hparam.sh 0.5 229
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/230 submit_single_hparam.sh 0.5 230
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/231 submit_single_hparam.sh 0.5 231
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/232 submit_single_hparam.sh 0.5 232
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/233 submit_single_hparam.sh 0.5 233
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/234 submit_single_hparam.sh 0.5 234
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/235 submit_single_hparam.sh 0.5 235
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/236 submit_single_hparam.sh 0.5 236
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/237 submit_single_hparam.sh 0.5 237
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/238 submit_single_hparam.sh 0.5 238
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/239 submit_single_hparam.sh 0.5 239
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/240 submit_single_hparam.sh 0.5 240
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/241 submit_single_hparam.sh 0.5 241
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/242 submit_single_hparam.sh 0.5 242
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/243 submit_single_hparam.sh 0.5 243
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/244 submit_single_hparam.sh 0.5 244
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/245 submit_single_hparam.sh 0.5 245
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/246 submit_single_hparam.sh 0.5 246
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/247 submit_single_hparam.sh 0.5 247
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/248 submit_single_hparam.sh 0.5 248
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/249 submit_single_hparam.sh 0.5 249
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/250 submit_single_hparam.sh 0.5 250
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/251 submit_single_hparam.sh 0.5 251
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/252 submit_single_hparam.sh 0.5 252
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/253 submit_single_hparam.sh 0.5 253
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/254 submit_single_hparam.sh 0.5 254
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/255 submit_single_hparam.sh 0.5 255
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/256 submit_single_hparam.sh 0.5 256
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/257 submit_single_hparam.sh 0.5 257
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/258 submit_single_hparam.sh 0.5 258
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/259 submit_single_hparam.sh 0.5 259
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/260 submit_single_hparam.sh 0.5 260
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/261 submit_single_hparam.sh 0.5 261
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/262 submit_single_hparam.sh 0.5 262
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/263 submit_single_hparam.sh 0.5 263
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/264 submit_single_hparam.sh 0.5 264
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/265 submit_single_hparam.sh 0.5 265
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/266 submit_single_hparam.sh 0.5 266
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/267 submit_single_hparam.sh 0.5 267
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/268 submit_single_hparam.sh 0.5 268
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/269 submit_single_hparam.sh 0.5 269
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/270 submit_single_hparam.sh 0.5 270
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/271 submit_single_hparam.sh 0.5 271
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/272 submit_single_hparam.sh 0.5 272
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/273 submit_single_hparam.sh 0.5 273
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/274 submit_single_hparam.sh 0.5 274
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/275 submit_single_hparam.sh 0.5 275
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/276 submit_single_hparam.sh 0.5 276
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/277 submit_single_hparam.sh 0.5 277
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/278 submit_single_hparam.sh 0.5 278
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/279 submit_single_hparam.sh 0.5 279
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/280 submit_single_hparam.sh 0.5 280
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/281 submit_single_hparam.sh 0.5 281
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/282 submit_single_hparam.sh 0.5 282
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/283 submit_single_hparam.sh 0.5 283
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/284 submit_single_hparam.sh 0.5 284
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/285 submit_single_hparam.sh 0.5 285
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/286 submit_single_hparam.sh 0.5 286
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/287 submit_single_hparam.sh 0.5 287
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/288 submit_single_hparam.sh 0.5 288
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/289 submit_single_hparam.sh 0.5 289
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/290 submit_single_hparam.sh 0.5 290
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/291 submit_single_hparam.sh 0.5 291
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/292 submit_single_hparam.sh 0.5 292
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/293 submit_single_hparam.sh 0.5 293
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/294 submit_single_hparam.sh 0.5 294
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/295 submit_single_hparam.sh 0.5 295
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/296 submit_single_hparam.sh 0.5 296
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/297 submit_single_hparam.sh 0.5 297
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/298 submit_single_hparam.sh 0.5 298
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/299 submit_single_hparam.sh 0.5 299
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/300 submit_single_hparam.sh 0.5 300
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/301 submit_single_hparam.sh 0.5 301
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/302 submit_single_hparam.sh 0.5 302
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/303 submit_single_hparam.sh 0.5 303
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/304 submit_single_hparam.sh 0.5 304
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/305 submit_single_hparam.sh 0.5 305
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/306 submit_single_hparam.sh 0.5 306
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/307 submit_single_hparam.sh 0.5 307
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/308 submit_single_hparam.sh 0.5 308
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/309 submit_single_hparam.sh 0.5 309
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/310 submit_single_hparam.sh 0.5 310
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/311 submit_single_hparam.sh 0.5 311
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/312 submit_single_hparam.sh 0.5 312
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/313 submit_single_hparam.sh 0.5 313
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/314 submit_single_hparam.sh 0.5 314
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/315 submit_single_hparam.sh 0.5 315
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/316 submit_single_hparam.sh 0.5 316
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/317 submit_single_hparam.sh 0.5 317
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/318 submit_single_hparam.sh 0.5 318
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/319 submit_single_hparam.sh 0.5 319
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/320 submit_single_hparam.sh 0.5 320
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/321 submit_single_hparam.sh 0.5 321
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/322 submit_single_hparam.sh 0.5 322
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/323 submit_single_hparam.sh 0.5 323
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/324 submit_single_hparam.sh 0.5 324
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/325 submit_single_hparam.sh 0.5 325
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/326 submit_single_hparam.sh 0.5 326
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/327 submit_single_hparam.sh 0.5 327
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/328 submit_single_hparam.sh 0.5 328
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/329 submit_single_hparam.sh 0.5 329
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/330 submit_single_hparam.sh 0.5 330
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/331 submit_single_hparam.sh 0.5 331
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/332 submit_single_hparam.sh 0.5 332
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/333 submit_single_hparam.sh 0.5 333
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/334 submit_single_hparam.sh 0.5 334
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/335 submit_single_hparam.sh 0.5 335
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/336 submit_single_hparam.sh 0.5 336
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/337 submit_single_hparam.sh 0.5 337
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/338 submit_single_hparam.sh 0.5 338
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/339 submit_single_hparam.sh 0.5 339
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/340 submit_single_hparam.sh 0.5 340
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/341 submit_single_hparam.sh 0.5 341
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/342 submit_single_hparam.sh 0.5 342
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/343 submit_single_hparam.sh 0.5 343
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/344 submit_single_hparam.sh 0.5 344
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/345 submit_single_hparam.sh 0.5 345
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/346 submit_single_hparam.sh 0.5 346
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/347 submit_single_hparam.sh 0.5 347
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/348 submit_single_hparam.sh 0.5 348
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/349 submit_single_hparam.sh 0.5 349
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/350 submit_single_hparam.sh 0.5 350
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/351 submit_single_hparam.sh 0.5 351
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/352 submit_single_hparam.sh 0.5 352
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/353 submit_single_hparam.sh 0.5 353
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/354 submit_single_hparam.sh 0.5 354
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/355 submit_single_hparam.sh 0.5 355
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/356 submit_single_hparam.sh 0.5 356
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/357 submit_single_hparam.sh 0.5 357
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/358 submit_single_hparam.sh 0.5 358
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/359 submit_single_hparam.sh 0.5 359
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/360 submit_single_hparam.sh 0.5 360
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/361 submit_single_hparam.sh 0.5 361
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/362 submit_single_hparam.sh 0.5 362
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/363 submit_single_hparam.sh 0.5 363
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/364 submit_single_hparam.sh 0.5 364
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/365 submit_single_hparam.sh 0.5 365
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/366 submit_single_hparam.sh 0.5 366
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/367 submit_single_hparam.sh 0.5 367
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/368 submit_single_hparam.sh 0.5 368
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/369 submit_single_hparam.sh 0.5 369
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/370 submit_single_hparam.sh 0.5 370
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/371 submit_single_hparam.sh 0.5 371
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/372 submit_single_hparam.sh 0.5 372
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/373 submit_single_hparam.sh 0.5 373
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/374 submit_single_hparam.sh 0.5 374
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/375 submit_single_hparam.sh 0.5 375
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/376 submit_single_hparam.sh 0.5 376
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/377 submit_single_hparam.sh 0.5 377
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/378 submit_single_hparam.sh 0.5 378
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/379 submit_single_hparam.sh 0.5 379
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/380 submit_single_hparam.sh 0.5 380
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/381 submit_single_hparam.sh 0.5 381
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/382 submit_single_hparam.sh 0.5 382
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/383 submit_single_hparam.sh 0.5 383
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/384 submit_single_hparam.sh 0.5 384
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/385 submit_single_hparam.sh 0.5 385
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/386 submit_single_hparam.sh 0.5 386
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/387 submit_single_hparam.sh 0.5 387
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/388 submit_single_hparam.sh 0.5 388
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/389 submit_single_hparam.sh 0.5 389
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/390 submit_single_hparam.sh 0.5 390
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/391 submit_single_hparam.sh 0.5 391
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/392 submit_single_hparam.sh 0.5 392
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/393 submit_single_hparam.sh 0.5 393
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/394 submit_single_hparam.sh 0.5 394
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/395 submit_single_hparam.sh 0.5 395
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/396 submit_single_hparam.sh 0.5 396
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/397 submit_single_hparam.sh 0.5 397
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/398 submit_single_hparam.sh 0.5 398
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/399 submit_single_hparam.sh 0.5 399
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/400 submit_single_hparam.sh 0.5 400
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/401 submit_single_hparam.sh 0.5 401
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/402 submit_single_hparam.sh 0.5 402
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/403 submit_single_hparam.sh 0.5 403
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/404 submit_single_hparam.sh 0.5 404
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/405 submit_single_hparam.sh 0.5 405
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/406 submit_single_hparam.sh 0.5 406
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/407 submit_single_hparam.sh 0.5 407
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/408 submit_single_hparam.sh 0.5 408
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/409 submit_single_hparam.sh 0.5 409
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/410 submit_single_hparam.sh 0.5 410
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/411 submit_single_hparam.sh 0.5 411
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/412 submit_single_hparam.sh 0.5 412
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/413 submit_single_hparam.sh 0.5 413
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/414 submit_single_hparam.sh 0.5 414
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/415 submit_single_hparam.sh 0.5 415
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/416 submit_single_hparam.sh 0.5 416
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/417 submit_single_hparam.sh 0.5 417
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/418 submit_single_hparam.sh 0.5 418
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/419 submit_single_hparam.sh 0.5 419
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/420 submit_single_hparam.sh 0.5 420
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/421 submit_single_hparam.sh 0.5 421
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/422 submit_single_hparam.sh 0.5 422
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/423 submit_single_hparam.sh 0.5 423
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/424 submit_single_hparam.sh 0.5 424
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/425 submit_single_hparam.sh 0.5 425
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/426 submit_single_hparam.sh 0.5 426
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/427 submit_single_hparam.sh 0.5 427
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/428 submit_single_hparam.sh 0.5 428
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/429 submit_single_hparam.sh 0.5 429
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/430 submit_single_hparam.sh 0.5 430
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/431 submit_single_hparam.sh 0.5 431
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/432 submit_single_hparam.sh 0.5 432
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/433 submit_single_hparam.sh 0.5 433
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/434 submit_single_hparam.sh 0.5 434
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/435 submit_single_hparam.sh 0.5 435
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/436 submit_single_hparam.sh 0.5 436
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/437 submit_single_hparam.sh 0.5 437
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/438 submit_single_hparam.sh 0.5 438
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/439 submit_single_hparam.sh 0.5 439
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/440 submit_single_hparam.sh 0.5 440
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/441 submit_single_hparam.sh 0.5 441
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/442 submit_single_hparam.sh 0.5 442
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/443 submit_single_hparam.sh 0.5 443
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/444 submit_single_hparam.sh 0.5 444
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/445 submit_single_hparam.sh 0.5 445
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/446 submit_single_hparam.sh 0.5 446
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/447 submit_single_hparam.sh 0.5 447
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/448 submit_single_hparam.sh 0.5 448
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/449 submit_single_hparam.sh 0.5 449
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/450 submit_single_hparam.sh 0.5 450
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/451 submit_single_hparam.sh 0.5 451
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/452 submit_single_hparam.sh 0.5 452
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/453 submit_single_hparam.sh 0.5 453
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/454 submit_single_hparam.sh 0.5 454
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/455 submit_single_hparam.sh 0.5 455
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/456 submit_single_hparam.sh 0.5 456
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/457 submit_single_hparam.sh 0.5 457
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/458 submit_single_hparam.sh 0.5 458
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/459 submit_single_hparam.sh 0.5 459
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/460 submit_single_hparam.sh 0.5 460
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/461 submit_single_hparam.sh 0.5 461
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/462 submit_single_hparam.sh 0.5 462
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/463 submit_single_hparam.sh 0.5 463
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/464 submit_single_hparam.sh 0.5 464
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/465 submit_single_hparam.sh 0.5 465
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/466 submit_single_hparam.sh 0.5 466
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/467 submit_single_hparam.sh 0.5 467
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/468 submit_single_hparam.sh 0.5 468
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/469 submit_single_hparam.sh 0.5 469
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/470 submit_single_hparam.sh 0.5 470
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/471 submit_single_hparam.sh 0.5 471
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/472 submit_single_hparam.sh 0.5 472
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/473 submit_single_hparam.sh 0.5 473
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/474 submit_single_hparam.sh 0.5 474
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/475 submit_single_hparam.sh 0.5 475
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/476 submit_single_hparam.sh 0.5 476
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/477 submit_single_hparam.sh 0.5 477
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/478 submit_single_hparam.sh 0.5 478
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/479 submit_single_hparam.sh 0.5 479
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/480 submit_single_hparam.sh 0.5 480
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/481 submit_single_hparam.sh 0.5 481
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/482 submit_single_hparam.sh 0.5 482
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/483 submit_single_hparam.sh 0.5 483
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/484 submit_single_hparam.sh 0.5 484
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/485 submit_single_hparam.sh 0.5 485
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/486 submit_single_hparam.sh 0.5 486
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/487 submit_single_hparam.sh 0.5 487
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/488 submit_single_hparam.sh 0.5 488
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/489 submit_single_hparam.sh 0.5 489
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/490 submit_single_hparam.sh 0.5 490
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/491 submit_single_hparam.sh 0.5 491
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/492 submit_single_hparam.sh 0.5 492
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/493 submit_single_hparam.sh 0.5 493
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/494 submit_single_hparam.sh 0.5 494
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/495 submit_single_hparam.sh 0.5 495
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/496 submit_single_hparam.sh 0.5 496
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/497 submit_single_hparam.sh 0.5 497
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/498 submit_single_hparam.sh 0.5 498
-sbatch -p gpu_high --gres=gpu:1 -o log/gridsearch/single_jobs/phantomD_D0.5/499 submit_single_hparam.sh 0.5 499
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/0 submit_single_hparam.sh 0.5 0.01 A V L 0
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/1 submit_single_hparam.sh 0.5 0.01 A V L 1
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/2 submit_single_hparam.sh 0.5 0.01 A V L 2
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/3 submit_single_hparam.sh 0.5 0.01 A V L 3
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/4 submit_single_hparam.sh 0.5 0.01 A V L 4
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/5 submit_single_hparam.sh 0.5 0.01 A V L 5
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/6 submit_single_hparam.sh 0.5 0.01 A V L 6
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/7 submit_single_hparam.sh 0.5 0.01 A V L 7
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/8 submit_single_hparam.sh 0.5 0.01 A V L 8
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/9 submit_single_hparam.sh 0.5 0.01 A V L 9
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/10 submit_single_hparam.sh 0.5 0.01 A V L 10
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/11 submit_single_hparam.sh 0.5 0.01 A V L 11
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/12 submit_single_hparam.sh 0.5 0.01 A V L 12
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/13 submit_single_hparam.sh 0.5 0.01 A V L 13
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/14 submit_single_hparam.sh 0.5 0.01 A V L 14
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/15 submit_single_hparam.sh 0.5 0.01 A V L 15
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/16 submit_single_hparam.sh 0.5 0.01 A V L 16
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/17 submit_single_hparam.sh 0.5 0.01 A V L 17
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/18 submit_single_hparam.sh 0.5 0.01 A V L 18
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/19 submit_single_hparam.sh 0.5 0.01 A V L 19
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/20 submit_single_hparam.sh 0.5 0.01 A V L 20
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/21 submit_single_hparam.sh 0.5 0.01 A V L 21
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/22 submit_single_hparam.sh 0.5 0.01 A V L 22
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/23 submit_single_hparam.sh 0.5 0.01 A V L 23
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/24 submit_single_hparam.sh 0.5 0.01 A V L 24
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/25 submit_single_hparam.sh 0.5 0.01 A V L 25
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/26 submit_single_hparam.sh 0.5 0.01 A V L 26
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/27 submit_single_hparam.sh 0.5 0.01 A V L 27
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/28 submit_single_hparam.sh 0.5 0.01 A V L 28
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/29 submit_single_hparam.sh 0.5 0.01 A V L 29
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/30 submit_single_hparam.sh 0.5 0.01 A V L 30
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/31 submit_single_hparam.sh 0.5 0.01 A V L 31
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/32 submit_single_hparam.sh 0.5 0.01 A V L 32
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/33 submit_single_hparam.sh 0.5 0.01 A V L 33
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/34 submit_single_hparam.sh 0.5 0.01 A V L 34
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/35 submit_single_hparam.sh 0.5 0.01 A V L 35
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/36 submit_single_hparam.sh 0.5 0.01 A V L 36
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/37 submit_single_hparam.sh 0.5 0.01 A V L 37
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/38 submit_single_hparam.sh 0.5 0.01 A V L 38
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/39 submit_single_hparam.sh 0.5 0.01 A V L 39
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/40 submit_single_hparam.sh 0.5 0.01 A V L 40
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/41 submit_single_hparam.sh 0.5 0.01 A V L 41
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/42 submit_single_hparam.sh 0.5 0.01 A V L 42
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/43 submit_single_hparam.sh 0.5 0.01 A V L 43
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/44 submit_single_hparam.sh 0.5 0.01 A V L 44
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/45 submit_single_hparam.sh 0.5 0.01 A V L 45
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/46 submit_single_hparam.sh 0.5 0.01 A V L 46
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/47 submit_single_hparam.sh 0.5 0.01 A V L 47
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/48 submit_single_hparam.sh 0.5 0.01 A V L 48
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/49 submit_single_hparam.sh 0.5 0.01 A V L 49
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/50 submit_single_hparam.sh 0.5 0.01 A V L 50
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/51 submit_single_hparam.sh 0.5 0.01 A V L 51
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/52 submit_single_hparam.sh 0.5 0.01 A V L 52
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/53 submit_single_hparam.sh 0.5 0.01 A V L 53
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/54 submit_single_hparam.sh 0.5 0.01 A V L 54
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/55 submit_single_hparam.sh 0.5 0.01 A V L 55
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/56 submit_single_hparam.sh 0.5 0.01 A V L 56
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/57 submit_single_hparam.sh 0.5 0.01 A V L 57
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/58 submit_single_hparam.sh 0.5 0.01 A V L 58
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/59 submit_single_hparam.sh 0.5 0.01 A V L 59
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/60 submit_single_hparam.sh 0.5 0.01 A V L 60
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/61 submit_single_hparam.sh 0.5 0.01 A V L 61
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/62 submit_single_hparam.sh 0.5 0.01 A V L 62
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/63 submit_single_hparam.sh 0.5 0.01 A V L 63
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/64 submit_single_hparam.sh 0.5 0.01 A V L 64
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/65 submit_single_hparam.sh 0.5 0.01 A V L 65
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/66 submit_single_hparam.sh 0.5 0.01 A V L 66
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/67 submit_single_hparam.sh 0.5 0.01 A V L 67
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/68 submit_single_hparam.sh 0.5 0.01 A V L 68
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/69 submit_single_hparam.sh 0.5 0.01 A V L 69
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/70 submit_single_hparam.sh 0.5 0.01 A V L 70
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/71 submit_single_hparam.sh 0.5 0.01 A V L 71
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/72 submit_single_hparam.sh 0.5 0.01 A V L 72
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/73 submit_single_hparam.sh 0.5 0.01 A V L 73
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/74 submit_single_hparam.sh 0.5 0.01 A V L 74
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/75 submit_single_hparam.sh 0.5 0.01 A V L 75
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/76 submit_single_hparam.sh 0.5 0.01 A V L 76
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/77 submit_single_hparam.sh 0.5 0.01 A V L 77
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/78 submit_single_hparam.sh 0.5 0.01 A V L 78
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/79 submit_single_hparam.sh 0.5 0.01 A V L 79
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/80 submit_single_hparam.sh 0.5 0.01 A V L 80
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/81 submit_single_hparam.sh 0.5 0.01 A V L 81
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/82 submit_single_hparam.sh 0.5 0.01 A V L 82
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/83 submit_single_hparam.sh 0.5 0.01 A V L 83
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/84 submit_single_hparam.sh 0.5 0.01 A V L 84
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/85 submit_single_hparam.sh 0.5 0.01 A V L 85
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/86 submit_single_hparam.sh 0.5 0.01 A V L 86
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/87 submit_single_hparam.sh 0.5 0.01 A V L 87
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/88 submit_single_hparam.sh 0.5 0.01 A V L 88
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/89 submit_single_hparam.sh 0.5 0.01 A V L 89
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/90 submit_single_hparam.sh 0.5 0.01 A V L 90
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/91 submit_single_hparam.sh 0.5 0.01 A V L 91
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/92 submit_single_hparam.sh 0.5 0.01 A V L 92
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/93 submit_single_hparam.sh 0.5 0.01 A V L 93
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/94 submit_single_hparam.sh 0.5 0.01 A V L 94
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/95 submit_single_hparam.sh 0.5 0.01 A V L 95
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/96 submit_single_hparam.sh 0.5 0.01 A V L 96
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/97 submit_single_hparam.sh 0.5 0.01 A V L 97
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/98 submit_single_hparam.sh 0.5 0.01 A V L 98
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/99 submit_single_hparam.sh 0.5 0.01 A V L 99
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/100 submit_single_hparam.sh 0.5 0.01 A V L 100
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/101 submit_single_hparam.sh 0.5 0.01 A V L 101
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/102 submit_single_hparam.sh 0.5 0.01 A V L 102
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/103 submit_single_hparam.sh 0.5 0.01 A V L 103
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/104 submit_single_hparam.sh 0.5 0.01 A V L 104
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/105 submit_single_hparam.sh 0.5 0.01 A V L 105
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/106 submit_single_hparam.sh 0.5 0.01 A V L 106
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/107 submit_single_hparam.sh 0.5 0.01 A V L 107
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/108 submit_single_hparam.sh 0.5 0.01 A V L 108
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/109 submit_single_hparam.sh 0.5 0.01 A V L 109
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/110 submit_single_hparam.sh 0.5 0.01 A V L 110
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/111 submit_single_hparam.sh 0.5 0.01 A V L 111
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/112 submit_single_hparam.sh 0.5 0.01 A V L 112
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/113 submit_single_hparam.sh 0.5 0.01 A V L 113
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/114 submit_single_hparam.sh 0.5 0.01 A V L 114
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/115 submit_single_hparam.sh 0.5 0.01 A V L 115
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/116 submit_single_hparam.sh 0.5 0.01 A V L 116
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/117 submit_single_hparam.sh 0.5 0.01 A V L 117
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/118 submit_single_hparam.sh 0.5 0.01 A V L 118
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/119 submit_single_hparam.sh 0.5 0.01 A V L 119
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/120 submit_single_hparam.sh 0.5 0.01 A V L 120
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/121 submit_single_hparam.sh 0.5 0.01 A V L 121
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/122 submit_single_hparam.sh 0.5 0.01 A V L 122
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/123 submit_single_hparam.sh 0.5 0.01 A V L 123
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/124 submit_single_hparam.sh 0.5 0.01 A V L 124
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/125 submit_single_hparam.sh 0.5 0.01 A V L 125
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/126 submit_single_hparam.sh 0.5 0.01 A V L 126
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/127 submit_single_hparam.sh 0.5 0.01 A V L 127
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/128 submit_single_hparam.sh 0.5 0.01 A V L 128
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/129 submit_single_hparam.sh 0.5 0.01 A V L 129
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/130 submit_single_hparam.sh 0.5 0.01 A V L 130
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/131 submit_single_hparam.sh 0.5 0.01 A V L 131
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/132 submit_single_hparam.sh 0.5 0.01 A V L 132
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/133 submit_single_hparam.sh 0.5 0.01 A V L 133
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/134 submit_single_hparam.sh 0.5 0.01 A V L 134
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/135 submit_single_hparam.sh 0.5 0.01 A V L 135
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/136 submit_single_hparam.sh 0.5 0.01 A V L 136
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/137 submit_single_hparam.sh 0.5 0.01 A V L 137
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/138 submit_single_hparam.sh 0.5 0.01 A V L 138
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/139 submit_single_hparam.sh 0.5 0.01 A V L 139
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/140 submit_single_hparam.sh 0.5 0.01 A V L 140
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/141 submit_single_hparam.sh 0.5 0.01 A V L 141
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/142 submit_single_hparam.sh 0.5 0.01 A V L 142
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/143 submit_single_hparam.sh 0.5 0.01 A V L 143
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/144 submit_single_hparam.sh 0.5 0.01 A V L 144
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/145 submit_single_hparam.sh 0.5 0.01 A V L 145
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/146 submit_single_hparam.sh 0.5 0.01 A V L 146
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/147 submit_single_hparam.sh 0.5 0.01 A V L 147
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/148 submit_single_hparam.sh 0.5 0.01 A V L 148
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/149 submit_single_hparam.sh 0.5 0.01 A V L 149
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/150 submit_single_hparam.sh 0.5 0.01 A V L 150
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/151 submit_single_hparam.sh 0.5 0.01 A V L 151
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/152 submit_single_hparam.sh 0.5 0.01 A V L 152
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/153 submit_single_hparam.sh 0.5 0.01 A V L 153
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/154 submit_single_hparam.sh 0.5 0.01 A V L 154
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/155 submit_single_hparam.sh 0.5 0.01 A V L 155
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/156 submit_single_hparam.sh 0.5 0.01 A V L 156
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/157 submit_single_hparam.sh 0.5 0.01 A V L 157
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/158 submit_single_hparam.sh 0.5 0.01 A V L 158
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/159 submit_single_hparam.sh 0.5 0.01 A V L 159
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/160 submit_single_hparam.sh 0.5 0.01 A V L 160
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/161 submit_single_hparam.sh 0.5 0.01 A V L 161
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/162 submit_single_hparam.sh 0.5 0.01 A V L 162
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/163 submit_single_hparam.sh 0.5 0.01 A V L 163
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/164 submit_single_hparam.sh 0.5 0.01 A V L 164
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/165 submit_single_hparam.sh 0.5 0.01 A V L 165
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/166 submit_single_hparam.sh 0.5 0.01 A V L 166
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/167 submit_single_hparam.sh 0.5 0.01 A V L 167
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/168 submit_single_hparam.sh 0.5 0.01 A V L 168
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/169 submit_single_hparam.sh 0.5 0.01 A V L 169
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/170 submit_single_hparam.sh 0.5 0.01 A V L 170
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/171 submit_single_hparam.sh 0.5 0.01 A V L 171
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/172 submit_single_hparam.sh 0.5 0.01 A V L 172
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/173 submit_single_hparam.sh 0.5 0.01 A V L 173
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/174 submit_single_hparam.sh 0.5 0.01 A V L 174
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/175 submit_single_hparam.sh 0.5 0.01 A V L 175
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/176 submit_single_hparam.sh 0.5 0.01 A V L 176
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/177 submit_single_hparam.sh 0.5 0.01 A V L 177
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/178 submit_single_hparam.sh 0.5 0.01 A V L 178
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/179 submit_single_hparam.sh 0.5 0.01 A V L 179
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/180 submit_single_hparam.sh 0.5 0.01 A V L 180
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/181 submit_single_hparam.sh 0.5 0.01 A V L 181
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/182 submit_single_hparam.sh 0.5 0.01 A V L 182
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/183 submit_single_hparam.sh 0.5 0.01 A V L 183
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/184 submit_single_hparam.sh 0.5 0.01 A V L 184
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/185 submit_single_hparam.sh 0.5 0.01 A V L 185
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/186 submit_single_hparam.sh 0.5 0.01 A V L 186
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/187 submit_single_hparam.sh 0.5 0.01 A V L 187
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/188 submit_single_hparam.sh 0.5 0.01 A V L 188
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/189 submit_single_hparam.sh 0.5 0.01 A V L 189
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/190 submit_single_hparam.sh 0.5 0.01 A V L 190
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/191 submit_single_hparam.sh 0.5 0.01 A V L 191
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/192 submit_single_hparam.sh 0.5 0.01 A V L 192
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/193 submit_single_hparam.sh 0.5 0.01 A V L 193
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/194 submit_single_hparam.sh 0.5 0.01 A V L 194
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/195 submit_single_hparam.sh 0.5 0.01 A V L 195
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/196 submit_single_hparam.sh 0.5 0.01 A V L 196
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/197 submit_single_hparam.sh 0.5 0.01 A V L 197
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/198 submit_single_hparam.sh 0.5 0.01 A V L 198
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/199 submit_single_hparam.sh 0.5 0.01 A V L 199
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/200 submit_single_hparam.sh 0.5 0.01 A V L 200
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/201 submit_single_hparam.sh 0.5 0.01 A V L 201
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/202 submit_single_hparam.sh 0.5 0.01 A V L 202
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/203 submit_single_hparam.sh 0.5 0.01 A V L 203
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/204 submit_single_hparam.sh 0.5 0.01 A V L 204
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/205 submit_single_hparam.sh 0.5 0.01 A V L 205
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/206 submit_single_hparam.sh 0.5 0.01 A V L 206
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/207 submit_single_hparam.sh 0.5 0.01 A V L 207
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/208 submit_single_hparam.sh 0.5 0.01 A V L 208
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/209 submit_single_hparam.sh 0.5 0.01 A V L 209
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/210 submit_single_hparam.sh 0.5 0.01 A V L 210
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/211 submit_single_hparam.sh 0.5 0.01 A V L 211
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/212 submit_single_hparam.sh 0.5 0.01 A V L 212
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/213 submit_single_hparam.sh 0.5 0.01 A V L 213
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/214 submit_single_hparam.sh 0.5 0.01 A V L 214
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/215 submit_single_hparam.sh 0.5 0.01 A V L 215
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/216 submit_single_hparam.sh 0.5 0.01 A V L 216
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/217 submit_single_hparam.sh 0.5 0.01 A V L 217
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/218 submit_single_hparam.sh 0.5 0.01 A V L 218
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/219 submit_single_hparam.sh 0.5 0.01 A V L 219
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/220 submit_single_hparam.sh 0.5 0.01 A V L 220
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/221 submit_single_hparam.sh 0.5 0.01 A V L 221
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/222 submit_single_hparam.sh 0.5 0.01 A V L 222
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/223 submit_single_hparam.sh 0.5 0.01 A V L 223
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/224 submit_single_hparam.sh 0.5 0.01 A V L 224
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/225 submit_single_hparam.sh 0.5 0.01 A V L 225
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/226 submit_single_hparam.sh 0.5 0.01 A V L 226
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/227 submit_single_hparam.sh 0.5 0.01 A V L 227
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/228 submit_single_hparam.sh 0.5 0.01 A V L 228
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/229 submit_single_hparam.sh 0.5 0.01 A V L 229
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/230 submit_single_hparam.sh 0.5 0.01 A V L 230
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/231 submit_single_hparam.sh 0.5 0.01 A V L 231
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/232 submit_single_hparam.sh 0.5 0.01 A V L 232
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/233 submit_single_hparam.sh 0.5 0.01 A V L 233
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/234 submit_single_hparam.sh 0.5 0.01 A V L 234
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/235 submit_single_hparam.sh 0.5 0.01 A V L 235
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/236 submit_single_hparam.sh 0.5 0.01 A V L 236
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/237 submit_single_hparam.sh 0.5 0.01 A V L 237
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/238 submit_single_hparam.sh 0.5 0.01 A V L 238
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/239 submit_single_hparam.sh 0.5 0.01 A V L 239
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/240 submit_single_hparam.sh 0.5 0.01 A V L 240
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/241 submit_single_hparam.sh 0.5 0.01 A V L 241
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/242 submit_single_hparam.sh 0.5 0.01 A V L 242
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/243 submit_single_hparam.sh 0.5 0.01 A V L 243
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/244 submit_single_hparam.sh 0.5 0.01 A V L 244
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/245 submit_single_hparam.sh 0.5 0.01 A V L 245
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/246 submit_single_hparam.sh 0.5 0.01 A V L 246
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/247 submit_single_hparam.sh 0.5 0.01 A V L 247
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/248 submit_single_hparam.sh 0.5 0.01 A V L 248
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/249 submit_single_hparam.sh 0.5 0.01 A V L 249
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/250 submit_single_hparam.sh 0.5 0.01 A V L 250
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/251 submit_single_hparam.sh 0.5 0.01 A V L 251
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/252 submit_single_hparam.sh 0.5 0.01 A V L 252
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/253 submit_single_hparam.sh 0.5 0.01 A V L 253
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/254 submit_single_hparam.sh 0.5 0.01 A V L 254
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/255 submit_single_hparam.sh 0.5 0.01 A V L 255
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/256 submit_single_hparam.sh 0.5 0.01 A V L 256
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/257 submit_single_hparam.sh 0.5 0.01 A V L 257
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/258 submit_single_hparam.sh 0.5 0.01 A V L 258
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/259 submit_single_hparam.sh 0.5 0.01 A V L 259
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/260 submit_single_hparam.sh 0.5 0.01 A V L 260
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/261 submit_single_hparam.sh 0.5 0.01 A V L 261
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/262 submit_single_hparam.sh 0.5 0.01 A V L 262
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/263 submit_single_hparam.sh 0.5 0.01 A V L 263
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/264 submit_single_hparam.sh 0.5 0.01 A V L 264
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/265 submit_single_hparam.sh 0.5 0.01 A V L 265
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/266 submit_single_hparam.sh 0.5 0.01 A V L 266
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/267 submit_single_hparam.sh 0.5 0.01 A V L 267
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/268 submit_single_hparam.sh 0.5 0.01 A V L 268
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/269 submit_single_hparam.sh 0.5 0.01 A V L 269
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/270 submit_single_hparam.sh 0.5 0.01 A V L 270
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/271 submit_single_hparam.sh 0.5 0.01 A V L 271
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/272 submit_single_hparam.sh 0.5 0.01 A V L 272
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/273 submit_single_hparam.sh 0.5 0.01 A V L 273
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/274 submit_single_hparam.sh 0.5 0.01 A V L 274
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/275 submit_single_hparam.sh 0.5 0.01 A V L 275
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/276 submit_single_hparam.sh 0.5 0.01 A V L 276
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/277 submit_single_hparam.sh 0.5 0.01 A V L 277
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/278 submit_single_hparam.sh 0.5 0.01 A V L 278
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/279 submit_single_hparam.sh 0.5 0.01 A V L 279
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/280 submit_single_hparam.sh 0.5 0.01 A V L 280
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/281 submit_single_hparam.sh 0.5 0.01 A V L 281
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/282 submit_single_hparam.sh 0.5 0.01 A V L 282
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/283 submit_single_hparam.sh 0.5 0.01 A V L 283
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/284 submit_single_hparam.sh 0.5 0.01 A V L 284
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/285 submit_single_hparam.sh 0.5 0.01 A V L 285
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/286 submit_single_hparam.sh 0.5 0.01 A V L 286
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/287 submit_single_hparam.sh 0.5 0.01 A V L 287
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/288 submit_single_hparam.sh 0.5 0.01 A V L 288
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/289 submit_single_hparam.sh 0.5 0.01 A V L 289
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/290 submit_single_hparam.sh 0.5 0.01 A V L 290
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/291 submit_single_hparam.sh 0.5 0.01 A V L 291
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/292 submit_single_hparam.sh 0.5 0.01 A V L 292
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/293 submit_single_hparam.sh 0.5 0.01 A V L 293
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/294 submit_single_hparam.sh 0.5 0.01 A V L 294
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/295 submit_single_hparam.sh 0.5 0.01 A V L 295
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/296 submit_single_hparam.sh 0.5 0.01 A V L 296
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/297 submit_single_hparam.sh 0.5 0.01 A V L 297
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/298 submit_single_hparam.sh 0.5 0.01 A V L 298
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/299 submit_single_hparam.sh 0.5 0.01 A V L 299
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/300 submit_single_hparam.sh 0.5 0.01 A V L 300
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/301 submit_single_hparam.sh 0.5 0.01 A V L 301
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/302 submit_single_hparam.sh 0.5 0.01 A V L 302
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/303 submit_single_hparam.sh 0.5 0.01 A V L 303
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/304 submit_single_hparam.sh 0.5 0.01 A V L 304
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/305 submit_single_hparam.sh 0.5 0.01 A V L 305
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/306 submit_single_hparam.sh 0.5 0.01 A V L 306
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/307 submit_single_hparam.sh 0.5 0.01 A V L 307
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/308 submit_single_hparam.sh 0.5 0.01 A V L 308
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/309 submit_single_hparam.sh 0.5 0.01 A V L 309
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/310 submit_single_hparam.sh 0.5 0.01 A V L 310
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/311 submit_single_hparam.sh 0.5 0.01 A V L 311
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/312 submit_single_hparam.sh 0.5 0.01 A V L 312
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/313 submit_single_hparam.sh 0.5 0.01 A V L 313
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/314 submit_single_hparam.sh 0.5 0.01 A V L 314
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/315 submit_single_hparam.sh 0.5 0.01 A V L 315
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/316 submit_single_hparam.sh 0.5 0.01 A V L 316
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/317 submit_single_hparam.sh 0.5 0.01 A V L 317
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/318 submit_single_hparam.sh 0.5 0.01 A V L 318
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/319 submit_single_hparam.sh 0.5 0.01 A V L 319
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/320 submit_single_hparam.sh 0.5 0.01 A V L 320
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/321 submit_single_hparam.sh 0.5 0.01 A V L 321
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/322 submit_single_hparam.sh 0.5 0.01 A V L 322
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/323 submit_single_hparam.sh 0.5 0.01 A V L 323
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/324 submit_single_hparam.sh 0.5 0.01 A V L 324
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/325 submit_single_hparam.sh 0.5 0.01 A V L 325
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/326 submit_single_hparam.sh 0.5 0.01 A V L 326
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/327 submit_single_hparam.sh 0.5 0.01 A V L 327
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/328 submit_single_hparam.sh 0.5 0.01 A V L 328
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/329 submit_single_hparam.sh 0.5 0.01 A V L 329
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/330 submit_single_hparam.sh 0.5 0.01 A V L 330
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/331 submit_single_hparam.sh 0.5 0.01 A V L 331
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/332 submit_single_hparam.sh 0.5 0.01 A V L 332
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/333 submit_single_hparam.sh 0.5 0.01 A V L 333
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/334 submit_single_hparam.sh 0.5 0.01 A V L 334
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/335 submit_single_hparam.sh 0.5 0.01 A V L 335
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/336 submit_single_hparam.sh 0.5 0.01 A V L 336
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/337 submit_single_hparam.sh 0.5 0.01 A V L 337
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/338 submit_single_hparam.sh 0.5 0.01 A V L 338
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/339 submit_single_hparam.sh 0.5 0.01 A V L 339
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/340 submit_single_hparam.sh 0.5 0.01 A V L 340
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/341 submit_single_hparam.sh 0.5 0.01 A V L 341
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/342 submit_single_hparam.sh 0.5 0.01 A V L 342
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/343 submit_single_hparam.sh 0.5 0.01 A V L 343
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/344 submit_single_hparam.sh 0.5 0.01 A V L 344
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/345 submit_single_hparam.sh 0.5 0.01 A V L 345
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/346 submit_single_hparam.sh 0.5 0.01 A V L 346
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/347 submit_single_hparam.sh 0.5 0.01 A V L 347
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/348 submit_single_hparam.sh 0.5 0.01 A V L 348
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/349 submit_single_hparam.sh 0.5 0.01 A V L 349
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/350 submit_single_hparam.sh 0.5 0.01 A V L 350
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/351 submit_single_hparam.sh 0.5 0.01 A V L 351
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/352 submit_single_hparam.sh 0.5 0.01 A V L 352
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/353 submit_single_hparam.sh 0.5 0.01 A V L 353
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/354 submit_single_hparam.sh 0.5 0.01 A V L 354
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/355 submit_single_hparam.sh 0.5 0.01 A V L 355
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/356 submit_single_hparam.sh 0.5 0.01 A V L 356
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/357 submit_single_hparam.sh 0.5 0.01 A V L 357
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/358 submit_single_hparam.sh 0.5 0.01 A V L 358
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/359 submit_single_hparam.sh 0.5 0.01 A V L 359
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/360 submit_single_hparam.sh 0.5 0.01 A V L 360
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/361 submit_single_hparam.sh 0.5 0.01 A V L 361
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/362 submit_single_hparam.sh 0.5 0.01 A V L 362
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/363 submit_single_hparam.sh 0.5 0.01 A V L 363
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/364 submit_single_hparam.sh 0.5 0.01 A V L 364
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/365 submit_single_hparam.sh 0.5 0.01 A V L 365
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/366 submit_single_hparam.sh 0.5 0.01 A V L 366
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/367 submit_single_hparam.sh 0.5 0.01 A V L 367
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/368 submit_single_hparam.sh 0.5 0.01 A V L 368
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/369 submit_single_hparam.sh 0.5 0.01 A V L 369
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/370 submit_single_hparam.sh 0.5 0.01 A V L 370
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/371 submit_single_hparam.sh 0.5 0.01 A V L 371
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/372 submit_single_hparam.sh 0.5 0.01 A V L 372
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/373 submit_single_hparam.sh 0.5 0.01 A V L 373
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/374 submit_single_hparam.sh 0.5 0.01 A V L 374
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/375 submit_single_hparam.sh 0.5 0.01 A V L 375
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/376 submit_single_hparam.sh 0.5 0.01 A V L 376
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/377 submit_single_hparam.sh 0.5 0.01 A V L 377
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/378 submit_single_hparam.sh 0.5 0.01 A V L 378
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/379 submit_single_hparam.sh 0.5 0.01 A V L 379
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/380 submit_single_hparam.sh 0.5 0.01 A V L 380
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/381 submit_single_hparam.sh 0.5 0.01 A V L 381
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/382 submit_single_hparam.sh 0.5 0.01 A V L 382
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/383 submit_single_hparam.sh 0.5 0.01 A V L 383
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/384 submit_single_hparam.sh 0.5 0.01 A V L 384
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/385 submit_single_hparam.sh 0.5 0.01 A V L 385
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/386 submit_single_hparam.sh 0.5 0.01 A V L 386
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/387 submit_single_hparam.sh 0.5 0.01 A V L 387
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/388 submit_single_hparam.sh 0.5 0.01 A V L 388
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/389 submit_single_hparam.sh 0.5 0.01 A V L 389
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/390 submit_single_hparam.sh 0.5 0.01 A V L 390
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/391 submit_single_hparam.sh 0.5 0.01 A V L 391
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/392 submit_single_hparam.sh 0.5 0.01 A V L 392
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/393 submit_single_hparam.sh 0.5 0.01 A V L 393
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/394 submit_single_hparam.sh 0.5 0.01 A V L 394
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/395 submit_single_hparam.sh 0.5 0.01 A V L 395
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/396 submit_single_hparam.sh 0.5 0.01 A V L 396
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/397 submit_single_hparam.sh 0.5 0.01 A V L 397
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/398 submit_single_hparam.sh 0.5 0.01 A V L 398
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/399 submit_single_hparam.sh 0.5 0.01 A V L 399
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/400 submit_single_hparam.sh 0.5 0.01 A V L 400
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/401 submit_single_hparam.sh 0.5 0.01 A V L 401
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/402 submit_single_hparam.sh 0.5 0.01 A V L 402
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/403 submit_single_hparam.sh 0.5 0.01 A V L 403
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/404 submit_single_hparam.sh 0.5 0.01 A V L 404
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/405 submit_single_hparam.sh 0.5 0.01 A V L 405
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/406 submit_single_hparam.sh 0.5 0.01 A V L 406
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/407 submit_single_hparam.sh 0.5 0.01 A V L 407
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/408 submit_single_hparam.sh 0.5 0.01 A V L 408
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/409 submit_single_hparam.sh 0.5 0.01 A V L 409
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/410 submit_single_hparam.sh 0.5 0.01 A V L 410
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/411 submit_single_hparam.sh 0.5 0.01 A V L 411
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/412 submit_single_hparam.sh 0.5 0.01 A V L 412
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/413 submit_single_hparam.sh 0.5 0.01 A V L 413
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/414 submit_single_hparam.sh 0.5 0.01 A V L 414
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/415 submit_single_hparam.sh 0.5 0.01 A V L 415
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/416 submit_single_hparam.sh 0.5 0.01 A V L 416
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/417 submit_single_hparam.sh 0.5 0.01 A V L 417
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/418 submit_single_hparam.sh 0.5 0.01 A V L 418
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/419 submit_single_hparam.sh 0.5 0.01 A V L 419
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/420 submit_single_hparam.sh 0.5 0.01 A V L 420
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/421 submit_single_hparam.sh 0.5 0.01 A V L 421
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/422 submit_single_hparam.sh 0.5 0.01 A V L 422
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/423 submit_single_hparam.sh 0.5 0.01 A V L 423
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/424 submit_single_hparam.sh 0.5 0.01 A V L 424
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/425 submit_single_hparam.sh 0.5 0.01 A V L 425
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/426 submit_single_hparam.sh 0.5 0.01 A V L 426
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/427 submit_single_hparam.sh 0.5 0.01 A V L 427
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/428 submit_single_hparam.sh 0.5 0.01 A V L 428
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/429 submit_single_hparam.sh 0.5 0.01 A V L 429
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/430 submit_single_hparam.sh 0.5 0.01 A V L 430
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/431 submit_single_hparam.sh 0.5 0.01 A V L 431
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/432 submit_single_hparam.sh 0.5 0.01 A V L 432
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/433 submit_single_hparam.sh 0.5 0.01 A V L 433
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/434 submit_single_hparam.sh 0.5 0.01 A V L 434
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/435 submit_single_hparam.sh 0.5 0.01 A V L 435
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/436 submit_single_hparam.sh 0.5 0.01 A V L 436
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/437 submit_single_hparam.sh 0.5 0.01 A V L 437
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/438 submit_single_hparam.sh 0.5 0.01 A V L 438
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/439 submit_single_hparam.sh 0.5 0.01 A V L 439
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/440 submit_single_hparam.sh 0.5 0.01 A V L 440
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/441 submit_single_hparam.sh 0.5 0.01 A V L 441
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/442 submit_single_hparam.sh 0.5 0.01 A V L 442
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/443 submit_single_hparam.sh 0.5 0.01 A V L 443
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/444 submit_single_hparam.sh 0.5 0.01 A V L 444
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/445 submit_single_hparam.sh 0.5 0.01 A V L 445
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/446 submit_single_hparam.sh 0.5 0.01 A V L 446
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/447 submit_single_hparam.sh 0.5 0.01 A V L 447
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/448 submit_single_hparam.sh 0.5 0.01 A V L 448
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/449 submit_single_hparam.sh 0.5 0.01 A V L 449
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/450 submit_single_hparam.sh 0.5 0.01 A V L 450
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/451 submit_single_hparam.sh 0.5 0.01 A V L 451
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/452 submit_single_hparam.sh 0.5 0.01 A V L 452
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/453 submit_single_hparam.sh 0.5 0.01 A V L 453
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/454 submit_single_hparam.sh 0.5 0.01 A V L 454
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/455 submit_single_hparam.sh 0.5 0.01 A V L 455
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/456 submit_single_hparam.sh 0.5 0.01 A V L 456
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/457 submit_single_hparam.sh 0.5 0.01 A V L 457
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/458 submit_single_hparam.sh 0.5 0.01 A V L 458
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/459 submit_single_hparam.sh 0.5 0.01 A V L 459
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/460 submit_single_hparam.sh 0.5 0.01 A V L 460
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/461 submit_single_hparam.sh 0.5 0.01 A V L 461
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/462 submit_single_hparam.sh 0.5 0.01 A V L 462
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/463 submit_single_hparam.sh 0.5 0.01 A V L 463
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/464 submit_single_hparam.sh 0.5 0.01 A V L 464
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/465 submit_single_hparam.sh 0.5 0.01 A V L 465
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/466 submit_single_hparam.sh 0.5 0.01 A V L 466
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/467 submit_single_hparam.sh 0.5 0.01 A V L 467
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/468 submit_single_hparam.sh 0.5 0.01 A V L 468
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/469 submit_single_hparam.sh 0.5 0.01 A V L 469
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/470 submit_single_hparam.sh 0.5 0.01 A V L 470
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/471 submit_single_hparam.sh 0.5 0.01 A V L 471
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/472 submit_single_hparam.sh 0.5 0.01 A V L 472
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/473 submit_single_hparam.sh 0.5 0.01 A V L 473
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/474 submit_single_hparam.sh 0.5 0.01 A V L 474
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/475 submit_single_hparam.sh 0.5 0.01 A V L 475
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/476 submit_single_hparam.sh 0.5 0.01 A V L 476
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/477 submit_single_hparam.sh 0.5 0.01 A V L 477
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/478 submit_single_hparam.sh 0.5 0.01 A V L 478
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/479 submit_single_hparam.sh 0.5 0.01 A V L 479
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/480 submit_single_hparam.sh 0.5 0.01 A V L 480
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/481 submit_single_hparam.sh 0.5 0.01 A V L 481
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/482 submit_single_hparam.sh 0.5 0.01 A V L 482
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/483 submit_single_hparam.sh 0.5 0.01 A V L 483
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/484 submit_single_hparam.sh 0.5 0.01 A V L 484
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/485 submit_single_hparam.sh 0.5 0.01 A V L 485
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/486 submit_single_hparam.sh 0.5 0.01 A V L 486
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/487 submit_single_hparam.sh 0.5 0.01 A V L 487
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/488 submit_single_hparam.sh 0.5 0.01 A V L 488
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/489 submit_single_hparam.sh 0.5 0.01 A V L 489
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/490 submit_single_hparam.sh 0.5 0.01 A V L 490
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/491 submit_single_hparam.sh 0.5 0.01 A V L 491
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/492 submit_single_hparam.sh 0.5 0.01 A V L 492
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/493 submit_single_hparam.sh 0.5 0.01 A V L 493
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/494 submit_single_hparam.sh 0.5 0.01 A V L 494
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/495 submit_single_hparam.sh 0.5 0.01 A V L 495
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/496 submit_single_hparam.sh 0.5 0.01 A V L 496
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/497 submit_single_hparam.sh 0.5 0.01 A V L 497
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/498 submit_single_hparam.sh 0.5 0.01 A V L 498
+sbatch -p gpu_high --gres=gpu:1 --mem=10G -o log/gridsearch/single_jobs/phantomDG_GenModality_D0.5_G0.01_MA_PhV_PermL/499 submit_single_hparam.sh 0.5 0.01 A V L 499

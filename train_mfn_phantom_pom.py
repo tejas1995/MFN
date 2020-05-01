@@ -13,6 +13,7 @@ import torch.optim as optim
 from torch.autograd import Variable, grad
 from torch.optim.lr_scheduler import ReduceLROnPlateau
 
+import math
 import h5py
 import time
 import data_loader as loader
@@ -33,6 +34,7 @@ from sklearn.metrics import accuracy_score, f1_score
 
 import sys
 
+PROJECT_DIR = '/work/tsriniva/MFN/'
 
 def get_data(args,config):
 	tr_split = 2.0/3                        # fixed. 62 training & validation, 31 test
@@ -122,25 +124,41 @@ def get_data(args,config):
 	return X_train, y_train, X_valid, y_valid, X_test, y_test
 
 def load_saved_data():
-	h5f = h5py.File('data/X_train.h5','r')
-	X_train = h5f['data'][:]
-	h5f.close()
-	h5f = h5py.File('data/y_train.h5','r')
-	y_train = h5f['data'][:]
-	h5f.close()
-	h5f = h5py.File('data/X_valid.h5','r')
-	X_valid = h5f['data'][:]
-	h5f.close()
-	h5f = h5py.File('data/y_valid.h5','r')
-	y_valid = h5f['data'][:]
-	h5f.close()
-	h5f = h5py.File('data/X_test.h5','r')
-	X_test = h5f['data'][:]
-	h5f.close()
-	h5f = h5py.File('data/y_test.h5','r')
-	y_test = h5f['data'][:]
-	h5f.close()
+	text_train = pickle.load(open(PROJECT_DIR+'pom_data/text_train.p','rb'))
+	audio_train = pickle.load(open(PROJECT_DIR+'pom_data/covarep_train.p','rb'))
+	video_train = pickle.load(open(PROJECT_DIR+'pom_data/facet_train.p','rb'))
+	y_train = pickle.load(open(PROJECT_DIR+'pom_data/y_train.p','r'))
+	X_train = np.concatenate((text_train, audio_train, video_train), axis=2)
+	
+	text_valid = pickle.load(open(PROJECT_DIR+'pom_data/text_valid.p','rb'))
+	audio_valid = pickle.load(open(PROJECT_DIR+'pom_data/covarep_valid.p','rb'))
+	video_valid = pickle.load(open(PROJECT_DIR+'pom_data/facet_valid.p','rb'))
+	y_valid = pickle.load(open(PROJECT_DIR+'pom_data/y_valid.p','r'))
+	X_valid = np.concatenate((text_valid, audio_valid, video_valid), axis=2)
+	
+	text_test = pickle.load(open(PROJECT_DIR+'pom_data/text_test.p','rb'))
+	audio_test = pickle.load(open(PROJECT_DIR+'pom_data/covarep_test.p','rb'))
+	video_test = pickle.load(open(PROJECT_DIR+'pom_data/facet_test.p','rb'))
+	y_test = pickle.load(open(PROJECT_DIR+'pom_data/y_test.p','r'))
+	X_test = np.concatenate((text_test, audio_test, video_test), axis=2)
+
+	#for i in range(17):
+	#	max_val = np.amax(y_test[:,i])
+	#	print(i, max_val)
+	#	print(list(set(np.round(y_test[:,i]).tolist())))
+	#sys.exit(0)
 	return X_train, y_train, X_valid, y_valid, X_test, y_test
+
+
+
+#parser = argparse.ArgumentParser(description='')
+#parser.add_argument('--config', default='configs/mosi.json', type=str)
+#parser.add_argument('--type', default='mgddm', type=str)	# d, gd, m1, m3
+#parser.add_argument('--fusion', default='mfn', type=str)	# ef, tf, mv, marn, mfn
+#parser.add_argument('-s', '--feature_selection', default=1, type=int, choices=[0,1], help='whether to use feature_selection')
+
+#args = parser.parse_args()
+#config = json.load(open(args.config), object_pairs_hook=OrderedDict)
 
 
 class MFNPhantom(nn.Module):
@@ -151,7 +169,7 @@ class MFNPhantom(nn.Module):
 		total_h_dim = self.dh_l+self.dh_a+self.dh_v
 		self.mem_dim = config["memsize"]
 		window_dim = config["windowsize"]
-		output_dim = 1
+		output_dim = 17
 		attInShape = total_h_dim*window_dim
 		gammaInShape = attInShape+self.mem_dim
 		final_out = total_h_dim+self.mem_dim
@@ -175,7 +193,6 @@ class MFNPhantom(nn.Module):
 		self.d_a_phantom = 128
 
 		self.modality_drop = config["modality_drop"]
-		self.g_loss_weight = config["g_loss_weight"]
 
 		self.phantom_v = nn.LSTM(self.d_l, self.d_v_phantom, num_layers=self.phantom_num_layers)
 		self.phantom_a = nn.LSTM(self.d_l, self.d_a_phantom, num_layers=self.phantom_num_layers)
@@ -189,6 +206,13 @@ class MFNPhantom(nn.Module):
 		#  	for param in layer.parameters():
 		#  		param.requires_grad = False
 
+		if mode == 'PhantomIntermD':
+			self.phantom_lstm_a = nn.LSTMCell(self.dh_l, self.dh_a)
+			self.phantom_lstm_v = nn.LSTMCell(self.dh_l, self.dh_v)
+		elif mode == 'PhantomIntermInputD':
+			self.phantom_lstm_a = nn.LSTMCell(self.d_l, self.dh_a)
+			self.phantom_lstm_v = nn.LSTMCell(self.d_l, self.dh_v)
+	
 		self.att1_fc1 = nn.Linear(attInShape, h_att1)
 		self.att1_fc2 = nn.Linear(h_att1, attInShape)
 		self.att1_dropout = nn.Dropout(att1_dropout)
@@ -209,14 +233,14 @@ class MFNPhantom(nn.Module):
 		self.out_fc2 = nn.Linear(h_out, output_dim)
 		self.out_dropout = nn.Dropout(out_dropout)
 
-		self.criterion = nn.L1Loss()
+		self.criterion = nn.MSELoss()
 		self.phantom_v_criterion = nn.L1Loss()
 		self.phantom_a_criterion = nn.L1Loss()
 
 		self.mode = mode
 
 
-	def forward(self,x_l, x_a, x_v, isPhantom=False, avZero=False):
+	def forward(self,x_l, x_a, x_v, isPhantom=False, avZero=False, intermPhantom=False, phantomInput=False):
 
 		pred_x_a = x_a
 		pred_x_v = x_v
@@ -250,6 +274,7 @@ class MFNPhantom(nn.Module):
 			x_v = torch.zeros(x_v.shape).cuda()
 
 
+
 		self.h_l = torch.zeros(n, self.dh_l).cuda()
 		self.h_a = torch.zeros(n, self.dh_a).cuda()
 		self.h_v = torch.zeros(n, self.dh_v).cuda()
@@ -273,8 +298,16 @@ class MFNPhantom(nn.Module):
 			prev_c_v = self.c_v
 			# curr time step
 			new_h_l, new_c_l = self.lstm_l(x_l[i], (self.h_l, self.c_l))
-			new_h_a, new_c_a = self.lstm_a(x_a[i], (self.h_a, self.c_a))
-			new_h_v, new_c_v = self.lstm_v(x_v[i], (self.h_v, self.c_v))
+			if intermPhantom is True:
+				if phantomInput is True:
+					new_h_a, new_c_a = self.phantom_lstm_a(x_l[i], (self.h_a, self.c_a))
+					new_h_v, new_c_v = self.phantom_lstm_v(x_l[i], (self.h_v, self.c_v))
+				else:
+					new_h_a, new_c_a = self.phantom_lstm_a(new_c_l, (self.h_a, self.c_a))
+					new_h_v, new_c_v = self.phantom_lstm_v(new_c_l, (self.h_v, self.c_v))
+			else:
+				new_h_a, new_c_a = self.lstm_a(x_a[i], (self.h_a, self.c_a))
+				new_h_v, new_c_v = self.lstm_v(x_v[i], (self.h_v, self.c_v))
 			# concatenate
 			prev_cs = torch.cat([prev_c_l,prev_c_a,prev_c_v], dim=1)
 			new_cs = torch.cat([new_c_l,new_c_a,new_c_v], dim=1)
@@ -309,8 +342,8 @@ class MFNPhantom(nn.Module):
 
 	def calc_phantom_loss(self, batchsize, X_test, y_test, mode='before'):
 
-		total_loss_a = [0.0]*5
-		total_loss_v = [0.0]*20
+		total_loss_a = [0.0]*74
+		total_loss_v = [0.0]*35
 
 		self.eval()
 		total_n = X_test.shape[1]
@@ -330,17 +363,17 @@ class MFNPhantom(nn.Module):
 
 			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, True)
 
-			for i in range(5):
-				total_loss_a[i] += self.phantom_a_criterion(pred_x_a[:,:,i], x_a[:,:,i]).item()/5
-			for i in range(20):
-				total_loss_v[i] += self.phantom_v_criterion(pred_x_v[:,:,i], x_v[:,:,i]).item()/20
+			for i in range(74):
+				total_loss_a[i] += self.phantom_a_criterion(pred_x_a[:,:,i], x_a[:,:,i]).item()/74
+			for i in range(35):
+				total_loss_v[i] += self.phantom_v_criterion(pred_x_v[:,:,i], x_v[:,:,i]).item()/35
 
 		audio_loss = 0.0
 		video_loss = 0.0
-		for i in range(5):
+		for i in range(74):
 			print mode, "audio loss dim", i, ":", total_loss_a[i]
 			audio_loss += total_loss_a[i]
-		for i in range(20):
+		for i in range(35):
 			print mode, "video loss dim", i, ":", total_loss_v[i]
 			video_loss += total_loss_v[i]
 
@@ -369,19 +402,35 @@ class MFNPhantom(nn.Module):
 				isPhantom = True if random.random() < self.modality_drop else False
 			else:
 				isPhantom = False
+
+			if self.mode in ['PhantomIntermD', 'PhantomIntermInputD']:
+				intermPhantom = True if random.random() < self.modality_drop else False
+				phantomInput = True if self.mode == 'PhantomIntermInputD' else False
+			else:
+				intermPhantom = False
+				phantomInput = False
+
 			if self.mode == 'PhantomBlind':
 				avZero = True
 			else:
 				avZero = False
 
-			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero)
+			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero, intermPhantom, phantomInput)
 			predictions = predictions.squeeze(1)
 
 			loss = self.criterion(predictions, batch_y)
+			torch.set_printoptions(profile="full")
+
+
 
 			if self.mode == 'PhantomDG':
-				loss += self.g_loss_weight*self.phantom_a_criterion(pred_x_a, x_a)
-				loss += self.g_loss_weight*self.phantom_v_criterion(pred_x_v, x_v)
+				loss += self.phantom_a_criterion(pred_x_a, x_a)
+				loss += self.phantom_v_criterion(pred_x_v, x_v)
+
+			#if math.isnan(loss.item()):
+				#continue
+				#print x_a[:,:,7]
+				#sys.exit(0)
 
 			loss.backward()
 			optimizer.step()
@@ -402,12 +451,19 @@ class MFNPhantom(nn.Module):
 				isPhantom = True
 			else:
 				isPhantom = False
+			if self.mode in ['PhantomIntermD', 'PhantomIntermInputD']:
+				intermPhantom = True
+				phantomInput = True if self.mode == 'PhantomIntermInputD' else False
+			else:
+				intermPhantom = False
+				phantomInput = False
+
 			if self.mode in ['PhantomBlind', 'PhantomICL']:
 				avZero = True
 			else:
 				avZero = False
 
-			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero)
+			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero, intermPhantom, phantomInput)
 			predictions = predictions.squeeze(1)
 
 			epoch_loss = self.criterion(predictions, batch_y)
@@ -426,12 +482,21 @@ class MFNPhantom(nn.Module):
 				isPhantom = True
 			else:
 				isPhantom = False
+
+			if self.mode in ['PhantomIntermD', 'PhantomIntermInputD']:
+				intermPhantom = True
+				phantomInput = True if self.mode == 'PhantomIntermInputD' else False
+			else:
+				intermPhantom = False
+				phantomInput = False
+
+
 			if self.mode in ['PhantomBlind', 'PhantomICL']:
 				avZero = True
 			else:
 				avZero = False
 
-			predictions, _, _ = self.forward(x_l, x_a, x_v, isPhantom, avZero)
+			predictions, _, _ = self.forward(x_l, x_a, x_v, isPhantom, avZero, intermPhantom, phantomInput)
 			predictions = predictions.squeeze(1)
 			predictions = predictions.cpu().data.numpy()
 		return predictions
@@ -456,9 +521,7 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 	[config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig] = configs
 
 	#model = EFLSTM(d,h,output_dim,dropout)
-	for i in range(args.hparam_iter+1):
-		print i
-		model = MFNPhantom(config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig, mode)
+	model = MFNPhantom(config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig, mode)
 
 	#optimizer = optim.SGD(model.parameters(),lr=config["lr"],momentum=config["momentum"])
 
@@ -477,8 +540,7 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 	best_valid = 999999.0
 	rand = random.randint(0,100000)
 
-	model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'before')
-	sys.exit(0)
+	# model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'before')
 
 	best_model = None
 	for epoch in range(config["num_epochs"]):
@@ -503,7 +565,7 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 	model = torch.load('{}/mfn_phantom_{}.pt'.format(save_path, args.hparam_iter))
 	#model = copy.deepcopy(best_model).cpu().gpu()
 
-	model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'after')
+	# model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'after')
 
 	for split in ['train', 'valid', 'test']:
 
@@ -516,20 +578,15 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 
 		predictions = model.predict(X)
 		mae = np.mean(np.absolute(predictions-y))
-		print split, "mae: ", mae
-		corr = np.corrcoef(predictions,y)[0][1]
-		print split, "corr: ", corr
-		mult = round(sum(np.round(predictions)==np.round(y))/float(len(y)),5)
-		print split, "mult_acc: ", mult
-		f_score = round(f1_score(np.round(predictions),np.round(y),average='weighted'),5)
-		print split, "mult f_score: ", f_score
-		true_label = (y >= 0)
-		predicted_label = (predictions >= 0)
-		print split, "Confusion Matrix :"
-		print confusion_matrix(true_label, predicted_label)
-		print split, "Classification Report :"
-		print classification_report(true_label, predicted_label, digits=5)
-		print split, "Accuracy ", accuracy_score(true_label, predicted_label)
+		for i in range(17):
+		    mae = np.mean(np.absolute(predictions[:,i]-y[:,i]))
+		    print split, "mae", i, ":", mae
+
+		for i in range(17):
+			rounded_preds = np.round(predictions[:,i])
+			rounded_labels = np.round(y[:,i])
+			acc = np.sum(rounded_preds==rounded_labels)/float(y.shape[0])*100.0
+			print split, "acc", i, ":", acc
 	sys.stdout.flush()
 
 def test(X_test, y_test, metric):
@@ -591,6 +648,10 @@ if local:
 	sys.stdout.flush()
 
 X_train, y_train, X_valid, y_valid, X_test, y_test = load_saved_data()
+X_train[X_train==float("-inf")] = 0.0
+X_valid[X_valid==float("-inf")] = 0.0
+X_test[X_test==float("-inf")] = 0.0
+
 
 #test(X_test, y_test, 'mae')
 #test(X_test, y_test, 'acc')
@@ -612,20 +673,19 @@ parser.add_argument('--hparam_iter', default=0, type=int)
 
 args = parser.parse_args()
 
-
 i = args.hparam_iter
 print "Hparam iter:", i
 
 
+
 config = dict()
-config["input_dims"] = [300,5,20]
-config["memsize"] = 128
+config["input_dims"] = [300,43, 43]
+config["memsize"] = 256
 config["windowsize"] = 2
 config["batchsize"] = 32
-config["num_epochs"] = 1000
+config["num_epochs"] = 500
 config["lr"] = 0.00001
 config["momentum"] = 0.9
-
 
 random.seed(123*i+456)
 
@@ -642,30 +702,35 @@ config["g_loss_weight"] = args.g_loss_weight
 
 NN1Config = dict()
 NN1Config["shapes"] = random.choice([64,128,256])
+#NN1Config["shapes"] = random.choice([16])
 NN1Config["drop"] = network_dropout
 NN2Config = dict()
 NN2Config["shapes"] = random.choice([64,128,256])
+#NN2Config["shapes"] = random.choice([16])
 NN2Config["drop"] = network_dropout
 gamma1Config = dict()
 gamma1Config["shapes"] = random.choice([64,128,256])
+#gamma1Config["shapes"] = random.choice([16])
 gamma1Config["drop"] = network_dropout
 gamma2Config = dict()
 gamma2Config["shapes"] = random.choice([64,128,256])
+#gamma2Config["shapes"] = random.choice([16])
 gamma2Config["drop"] = network_dropout
 outConfig = dict()
 outConfig["shapes"] = random.choice([64, 128,256])
+#outConfig["shapes"] = random.choice([16])
 outConfig["drop"] = network_dropout
 
 configs = [config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig]
 print configs
 
 mode = args.mode
-if mode not in ['PhantomDG', 'PhantomD', 'PhantomBlind', 'PhantomICL']:
+if mode not in ['PhantomDG', 'PhantomD', 'PhantomBlind', 'PhantomICL', 'MFN', 'PhantomIntermD', 'PhantomIntermInputD']:
 	print "Mode argument is invalid!"
 	sys.exit(0)
 
-save_path = 'gridsearch_models/'+mode
-if mode in ['PhantomD', 'PhantomDG']:
+save_path = PROJECT_DIR + 'gridsearch_models_mosei_emotions/'+mode
+if mode in ['PhantomD', 'PhantomDG', 'PhantomIntermD', 'PhantomIntermInputD']:
 	save_path += '_D'+str(args.modality_drop)
 if mode == 'PhantomDG':
 	save_path += '_G'+str(args.g_loss_weight)
@@ -676,8 +741,6 @@ print "Save path: " + save_path
 # mode = 'PhantomD'     # loss = task during training and val (phantom modality during val and test)
 # mode = 'PhantomBlind' # loss = task during training and val (0 inputs during training, val and test)
 # mode = 'PhantomICL'   # loss = task during training and val (ground truth inputs during training, 0 inputs during val and test)
-# mode = 'PhantomDG_GenModality' # loss = task + permanent missing modality loss + phantom modality loss (only task during val) (phantom modality during val and test)
 
 train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, configs, mode, save_path)
-
 

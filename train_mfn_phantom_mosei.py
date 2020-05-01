@@ -34,6 +34,7 @@ from sklearn.metrics import accuracy_score, f1_score
 
 import sys
 
+PROJECT_DIR = '/work/tsriniva/MFN/'
 
 def get_data(args,config):
 	tr_split = 2.0/3                        # fixed. 62 training & validation, 31 test
@@ -123,22 +124,22 @@ def get_data(args,config):
 	return X_train, y_train, X_valid, y_valid, X_test, y_test
 
 def load_saved_data():
-	h5f = h5py.File('mosei_data/X_train.h5','r')
+	h5f = h5py.File(PROJECT_DIR+'mosei_data/X_train.h5','r')
 	X_train = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File('mosei_data/y_train.h5','r')
+	h5f = h5py.File(PROJECT_DIR+'mosei_data/y_train.h5','r')
 	y_train = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File('mosei_data/X_valid.h5','r')
+	h5f = h5py.File(PROJECT_DIR+'mosei_data/X_valid.h5','r')
 	X_valid = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File('mosei_data/y_valid.h5','r')
+	h5f = h5py.File(PROJECT_DIR+'mosei_data/y_valid.h5','r')
 	y_valid = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File('mosei_data/X_test.h5','r')
+	h5f = h5py.File(PROJECT_DIR+'mosei_data/X_test.h5','r')
 	X_test = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File('mosei_data/y_test.h5','r')
+	h5f = h5py.File(PROJECT_DIR+'mosei_data/y_test.h5','r')
 	y_test = h5f['data'][:]
 	h5f.close()
 	return X_train, y_train, X_valid, y_valid, X_test, y_test
@@ -198,6 +199,14 @@ class MFNPhantom(nn.Module):
 		#  	for param in layer.parameters():
 		#  		param.requires_grad = False
 
+		if mode == 'PhantomIntermD':
+			self.phantom_lstm_a = nn.LSTMCell(self.dh_l, self.dh_a)
+			self.phantom_lstm_v = nn.LSTMCell(self.dh_l, self.dh_v)
+		elif mode == 'PhantomIntermInputD':
+			self.phantom_lstm_a = nn.LSTMCell(self.d_l, self.dh_a)
+			self.phantom_lstm_v = nn.LSTMCell(self.d_l, self.dh_v)
+		
+
 		self.att1_fc1 = nn.Linear(attInShape, h_att1)
 		self.att1_fc2 = nn.Linear(h_att1, attInShape)
 		self.att1_dropout = nn.Dropout(att1_dropout)
@@ -225,7 +234,7 @@ class MFNPhantom(nn.Module):
 		self.mode = mode
 
 
-	def forward(self,x_l, x_a, x_v, isPhantom=False, avZero=False):
+	def forward(self,x_l, x_a, x_v, isPhantom=False, avZero=False, intermPhantom=False, phantomInput=False):
 
 		pred_x_a = x_a
 		pred_x_v = x_v
@@ -283,8 +292,16 @@ class MFNPhantom(nn.Module):
 			prev_c_v = self.c_v
 			# curr time step
 			new_h_l, new_c_l = self.lstm_l(x_l[i], (self.h_l, self.c_l))
-			new_h_a, new_c_a = self.lstm_a(x_a[i], (self.h_a, self.c_a))
-			new_h_v, new_c_v = self.lstm_v(x_v[i], (self.h_v, self.c_v))
+			if intermPhantom is True:
+				if phantomInput is True:
+					new_h_a, new_c_a = self.phantom_lstm_a(x_l[i], (self.h_a, self.c_a))
+					new_h_v, new_c_v = self.phantom_lstm_v(x_l[i], (self.h_v, self.c_v))
+				else:
+					new_h_a, new_c_a = self.phantom_lstm_a(new_c_l, (self.h_a, self.c_a))
+					new_h_v, new_c_v = self.phantom_lstm_v(new_c_l, (self.h_v, self.c_v))
+			else:
+				new_h_a, new_c_a = self.lstm_a(x_a[i], (self.h_a, self.c_a))
+				new_h_v, new_c_v = self.lstm_v(x_v[i], (self.h_v, self.c_v))
 			# concatenate
 			prev_cs = torch.cat([prev_c_l,prev_c_a,prev_c_v], dim=1)
 			new_cs = torch.cat([new_c_l,new_c_a,new_c_v], dim=1)
@@ -379,12 +396,20 @@ class MFNPhantom(nn.Module):
 				isPhantom = True if random.random() < self.modality_drop else False
 			else:
 				isPhantom = False
+
+			if self.mode in ['PhantomIntermD', 'PhantomIntermInputD']:
+				intermPhantom = True if random.random() < self.modality_drop else False
+				phantomInput = True if self.mode == 'PhantomIntermInputD' else False
+			else:
+				intermPhantom = False
+				phantomInput = False
+
 			if self.mode == 'PhantomBlind':
 				avZero = True
 			else:
 				avZero = False
 
-			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero)
+			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero, intermPhantom, phantomInput)
 			predictions = predictions.squeeze(1)
 
 			loss = self.criterion(predictions, batch_y)
@@ -420,12 +445,20 @@ class MFNPhantom(nn.Module):
 				isPhantom = True
 			else:
 				isPhantom = False
+
+			if self.mode in ['PhantomIntermD', 'PhantomIntermInputD']:
+				intermPhantom = True
+				phantomInput = True if self.mode == 'PhantomIntermInputD' else False
+			else:
+				intermPhantom = False
+				phantomInput = False
+
 			if self.mode in ['PhantomBlind', 'PhantomICL']:
 				avZero = True
 			else:
 				avZero = False
 
-			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero)
+			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero, intermPhantom, phantomInput)
 			predictions = predictions.squeeze(1)
 
 			epoch_loss = self.criterion(predictions, batch_y)
@@ -444,12 +477,26 @@ class MFNPhantom(nn.Module):
 				isPhantom = True
 			else:
 				isPhantom = False
+
+			if self.mode in ['PhantomIntermD', 'PhantomIntermInputD']:
+				intermPhantom = True
+				phantomInput = True if self.mode == 'PhantomIntermInputD' else False
+			else:
+				intermPhantom = False
+				phantomInput = False
+
+
 			if self.mode in ['PhantomBlind', 'PhantomICL']:
 				avZero = True
 			else:
 				avZero = False
 
-			predictions, _, _ = self.forward(x_l, x_a, x_v, isPhantom, avZero)
+			if self.mode in ['PhantomBlind', 'PhantomICL']:
+				avZero = True
+			else:
+				avZero = False
+
+			predictions, _, _ = self.forward(x_l, x_a, x_v, isPhantom, avZero, intermPhantom, phantomInput)
 			predictions = predictions.squeeze(1)
 			predictions = predictions.cpu().data.numpy()
 		return predictions
@@ -641,7 +688,7 @@ config["input_dims"] = [300,74,35]
 config["memsize"] = 128
 config["windowsize"] = 2
 config["batchsize"] = 32
-config["num_epochs"] = 100
+config["num_epochs"] = 200
 config["lr"] = 0.00001
 config["momentum"] = 0.9
 
@@ -678,12 +725,12 @@ configs = [config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig]
 print configs
 
 mode = args.mode
-if mode not in ['PhantomDG', 'PhantomD', 'PhantomBlind', 'PhantomICL']:
+if mode not in ['PhantomDG', 'PhantomD', 'PhantomBlind', 'PhantomICL', 'MFN', 'PhantomIntermD', 'PhantomIntermInputD']:
 	print "Mode argument is invalid!"
 	sys.exit(0)
 
-save_path = 'gridsearch_models_mosei/'+mode
-if mode in ['PhantomD', 'PhantomDG']:
+save_path = PROJECT_DIR + 'gridsearch_models_mosei_200epochs/'+mode
+if mode in ['PhantomD', 'PhantomDG', 'PhantomIntermD', 'PhantomIntermInputD']:
 	save_path += '_D'+str(args.modality_drop)
 if mode == 'PhantomDG':
 	save_path += '_G'+str(args.g_loss_weight)
