@@ -186,6 +186,7 @@ class MFNPhantom(nn.Module):
 		self.d_a_phantom = 128
 
 		self.modality_drop = config["modality_drop"]
+		self.g_loss_weight = config["g_loss_weight"]
 
 		self.phantom_v = nn.LSTM(self.d_l, self.d_v_phantom, num_layers=self.phantom_num_layers)
 		self.phantom_a = nn.LSTM(self.d_l, self.d_a_phantom, num_layers=self.phantom_num_layers)
@@ -205,7 +206,17 @@ class MFNPhantom(nn.Module):
 		elif mode == 'PhantomIntermInputD':
 			self.phantom_lstm_a = nn.LSTMCell(self.d_l, self.dh_a)
 			self.phantom_lstm_v = nn.LSTMCell(self.d_l, self.dh_v)
-		
+		elif mode in ['MT2', 'MT3']:
+			self.phantom_lstm_a = nn.LSTMCell(self.dh_l, self.d_a_phantom)
+			self.phantom_lstm_v = nn.LSTMCell(self.dh_l, self.d_v_phantom)
+			self.phantom_ff_a = nn.Linear(self.d_a_phantom, self.d_a)
+			self.phantom_ff_v = nn.Linear(self.d_v_phantom, self.d_v)
+		elif mode in ['MT3+']:
+			self.phantom_lstm_a = nn.LSTMCell(self.dh_l+self.mem_dim, self.d_a_phantom)
+			self.phantom_lstm_v = nn.LSTMCell(self.dh_l+self.mem_dim, self.d_v_phantom)
+			self.phantom_ff_a = nn.Linear(self.d_a_phantom, self.d_a)
+			self.phantom_ff_v = nn.Linear(self.d_v_phantom, self.d_v)
+	
 
 		self.att1_fc1 = nn.Linear(attInShape, h_att1)
 		self.att1_fc2 = nn.Linear(h_att1, attInShape)
@@ -234,8 +245,11 @@ class MFNPhantom(nn.Module):
 		self.mode = mode
 
 
-	def forward(self,x_l, x_a, x_v, isPhantom=False, avZero=False, intermPhantom=False, phantomInput=False):
+	def forward(self,x_l, x_a, x_v, isPhantom=False, avZero=False, intermPhantom=False, phantomInput=False, mode=None):
 
+		'''
+		mode in ['MT2', 'MT3', 'MT3+']
+		'''
 		pred_x_a = x_a
 		pred_x_v = x_v
 
@@ -249,19 +263,31 @@ class MFNPhantom(nn.Module):
 		#print('x_a shape:', x_a.shape)
 		#print('x_v shape:', x_v.shape)
 
+		self.phantom_h_a = torch.zeros(self.phantom_num_layers, n, self.d_a_phantom).cuda()
+		self.phantom_c_a = torch.zeros(self.phantom_num_layers, n, self.d_a_phantom).cuda()
+		x_a_int, _ = self.phantom_a(x_l, (self.phantom_h_a, self.phantom_c_a))
+		pred_x_a = self.phantom_ff_a(x_a_int)
+
+		self.phantom_h_v = torch.zeros(self.phantom_num_layers, n, self.d_v_phantom).cuda()
+		self.phantom_c_v = torch.zeros(self.phantom_num_layers, n, self.d_v_phantom).cuda()
+		x_v_int, _ = self.phantom_v(x_l, (self.phantom_h_v, self.phantom_c_v))
+		pred_x_v = self.phantom_ff_v(x_v_int)
+
 		if isPhantom is True:
-			self.phantom_h_a = torch.zeros(self.phantom_num_layers, n, self.d_a_phantom).cuda()
-			self.phantom_c_a = torch.zeros(self.phantom_num_layers, n, self.d_a_phantom).cuda()
-			x_a_int, _ = self.phantom_a(x_l, (self.phantom_h_a, self.phantom_c_a))
-			x_a = self.phantom_ff_a(x_a_int)
+			x_a = pred_x_a
+			x_v = pred_x_v
+			#self.phantom_h_a = torch.zeros(self.phantom_num_layers, n, self.d_a_phantom).cuda()
+			#self.phantom_c_a = torch.zeros(self.phantom_num_layers, n, self.d_a_phantom).cuda()
+			#x_a_int, _ = self.phantom_a(x_l, (self.phantom_h_a, self.phantom_c_a))
+			#x_a = self.phantom_ff_a(x_a_int)
 
-			self.phantom_h_v = torch.zeros(self.phantom_num_layers, n, self.d_v_phantom).cuda()
-			self.phantom_c_v = torch.zeros(self.phantom_num_layers, n, self.d_v_phantom).cuda()
-			x_v_int, _ = self.phantom_v(x_l, (self.phantom_h_v, self.phantom_c_v))
-			x_v = self.phantom_ff_v(x_v_int)
+			#self.phantom_h_v = torch.zeros(self.phantom_num_layers, n, self.d_v_phantom).cuda()
+			#self.phantom_c_v = torch.zeros(self.phantom_num_layers, n, self.d_v_phantom).cuda()
+			#x_v_int, _ = self.phantom_v(x_l, (self.phantom_h_v, self.phantom_c_v))
+			#x_v = self.phantom_ff_v(x_v_int)
 
-			pred_x_a = x_a
-			pred_x_v = x_v
+			#pred_x_a = x_a
+			#pred_x_v = x_v
 
 		if avZero is True:
 			x_a = torch.zeros(x_a.shape).cuda()
@@ -285,6 +311,14 @@ class MFNPhantom(nn.Module):
 		all_c_vs = []
 		all_mems = []
 
+		if mode in ['MT2', 'MT3', 'MT3+']:
+			pred_x_a = torch.zeros(x_a.shape).cuda()
+			pred_x_v = torch.zeros(x_v.shape).cuda()
+			self.h_a_phantom = torch.zeros(n, self.d_a_phantom).cuda()
+			self.c_a_phantom = torch.zeros(n, self.d_a_phantom).cuda()
+			self.h_v_phantom = torch.zeros(n, self.d_v_phantom).cuda()
+			self.c_v_phantom = torch.zeros(n, self.d_v_phantom).cuda()
+
 		for i in range(t):
 			# prev time step
 			prev_c_l = self.c_l
@@ -299,9 +333,44 @@ class MFNPhantom(nn.Module):
 				else:
 					new_h_a, new_c_a = self.phantom_lstm_a(new_c_l, (self.h_a, self.c_a))
 					new_h_v, new_c_v = self.phantom_lstm_v(new_c_l, (self.h_v, self.c_v))
+			elif mode == 'MT2':
+				new_x_h_a, new_x_c_a = self.phantom_lstm_a(new_h_l, (self.h_a_phantom, self.c_a_phantom))
+				new_x_h_v, new_x_c_v = self.phantom_lstm_v(new_h_l, (self.h_v_phantom, self.c_v_phantom))
+				pred_x_a_i = self.phantom_ff_a(new_x_h_a)
+				pred_x_v_i = self.phantom_ff_v(new_x_h_v)
+
+				new_h_a, new_c_a = self.lstm_a(pred_x_a_i, (self.h_a, self.c_a))
+				new_h_v, new_c_v = self.lstm_v(pred_x_v_i, (self.h_v, self.c_v))
+
+				self.h_a_phantom, self.c_a_phantom = new_x_h_a, new_x_c_a
+				self.h_v_phantom, self.c_v_phantom = new_x_h_v, new_x_c_v
+				
+				pred_x_a[i] = pred_x_a_i
+				pred_x_v[i] = pred_x_v_i
+
+
 			else:
+
+				if mode in ['MT3', 'MT3+']:
+					if mode == 'MT3':
+						phantom_input = new_h_l
+					elif mode == 'MT3+':
+						phantom_input = torch.cat([new_h_l, self.mem], dim=1)
+
+					new_x_h_a, new_x_c_a = self.phantom_lstm_a(phantom_input, (self.h_a_phantom, self.c_a_phantom))
+					new_x_h_v, new_x_c_v = self.phantom_lstm_v(phantom_input, (self.h_v_phantom, self.c_v_phantom))
+					pred_x_a_i = self.phantom_ff_a(new_x_h_a)
+					pred_x_v_i = self.phantom_ff_v(new_x_h_v)
+
+					pred_x_a[i] = pred_x_a_i
+					pred_x_v[i] = pred_x_v_i
+		
+					self.h_a_phantom, self.c_a_phantom = new_x_h_a, new_x_c_a
+					self.h_v_phantom, self.c_v_phantom = new_x_h_v, new_x_c_v
+
 				new_h_a, new_c_a = self.lstm_a(x_a[i], (self.h_a, self.c_a))
 				new_h_v, new_c_v = self.lstm_v(x_v[i], (self.h_v, self.c_v))
+
 			# concatenate
 			prev_cs = torch.cat([prev_c_l,prev_c_a,prev_c_v], dim=1)
 			new_cs = torch.cat([new_c_l,new_c_a,new_c_v], dim=1)
@@ -379,7 +448,8 @@ class MFNPhantom(nn.Module):
 		epoch_loss = 0
 		self.train()
 		total_n = X_train.shape[1]
-		num_batches = total_n / batchsize	
+		num_batches = total_n / batchsize
+
 		for batch in xrange(num_batches):
 			start = batch*batchsize
 			end = (batch+1)*batchsize
@@ -392,7 +462,7 @@ class MFNPhantom(nn.Module):
 			x_a = batch_X[:,:,self.d_l:self.d_l+self.d_a]
 			x_v = batch_X[:,:,self.d_l+self.d_a:]
 
-			if self.mode in ['PhantomDG', 'PhantomD']:
+			if self.mode in ['PhantomD', 'PhantomDG']: 		# add 'PhantomDG' for original DG (phantom rep fed to MFN), if real rep fed to MFN then only add to loss (DG_new)
 				isPhantom = True if random.random() < self.modality_drop else False
 			else:
 				isPhantom = False
@@ -404,12 +474,18 @@ class MFNPhantom(nn.Module):
 				intermPhantom = False
 				phantomInput = False
 
-			if self.mode == 'PhantomBlind':
+			if self.mode in ['PhantomBlind', 'MT3', 'MT3+']:
 				avZero = True
 			else:
 				avZero = False
 
-			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero, intermPhantom, phantomInput)
+
+			if self.mode in ['MT2', 'MT3', 'MT3+']:
+				mode = self.mode
+			else:
+				mode = None
+
+			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero, intermPhantom, phantomInput, mode)
 			predictions = predictions.squeeze(1)
 
 			loss = self.criterion(predictions, batch_y)
@@ -417,9 +493,9 @@ class MFNPhantom(nn.Module):
 
 
 
-			if self.mode == 'PhantomDG':
-				loss += self.phantom_a_criterion(pred_x_a, x_a)
-				loss += self.phantom_v_criterion(pred_x_v, x_v)
+			if self.mode in ['PhantomDG', 'MT2', 'MT3', 'MT3+']:
+				loss += self.g_loss_weight*self.phantom_a_criterion(pred_x_a, x_a)
+				loss += self.g_loss_weight*self.phantom_v_criterion(pred_x_v, x_v)
 
 			#if math.isnan(loss.item()):
 				#continue
@@ -431,9 +507,11 @@ class MFNPhantom(nn.Module):
 			epoch_loss += loss.item()
 		return epoch_loss / num_batches
 
+
 	def evaluate(self, X_valid, y_valid):
 		epoch_loss = 0
 		self.eval()
+
 		with torch.no_grad():
 			batch_X = torch.Tensor(X_valid).cuda()
 			batch_y = torch.Tensor(y_valid).cuda()
@@ -453,20 +531,27 @@ class MFNPhantom(nn.Module):
 				intermPhantom = False
 				phantomInput = False
 
-			if self.mode in ['PhantomBlind', 'PhantomICL']:
+			if self.mode in ['PhantomBlind', 'PhantomICL', 'MT3', 'MT3+']:
 				avZero = True
 			else:
 				avZero = False
 
-			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero, intermPhantom, phantomInput)
+			if self.mode in ['MT2']:
+				mode = self.mode
+			else:
+				mode = None
+
+			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero, intermPhantom, phantomInput, mode)
 			predictions = predictions.squeeze(1)
 
 			epoch_loss = self.criterion(predictions, batch_y)
 		return epoch_loss.item()
 
+
 	def predict(self, X_test):
 		epoch_loss = 0
 		self.eval()
+
 		with torch.no_grad():
 			batch_X = torch.Tensor(X_test).cuda()
 			x_l = batch_X[:,:,:self.d_l]
@@ -486,17 +571,17 @@ class MFNPhantom(nn.Module):
 				phantomInput = False
 
 
-			if self.mode in ['PhantomBlind', 'PhantomICL']:
+			if self.mode in ['PhantomBlind', 'PhantomICL', 'MT3', 'MT3+']:
 				avZero = True
 			else:
 				avZero = False
 
-			if self.mode in ['PhantomBlind', 'PhantomICL']:
-				avZero = True
+			if self.mode in ['MT2']:
+				mode = self.mode
 			else:
-				avZero = False
+				mode = None
 
-			predictions, _, _ = self.forward(x_l, x_a, x_v, isPhantom, avZero, intermPhantom, phantomInput)
+			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, isPhantom, avZero, intermPhantom, phantomInput, mode)
 			predictions = predictions.squeeze(1)
 			predictions = predictions.cpu().data.numpy()
 		return predictions
@@ -540,7 +625,7 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 	best_valid = 999999.0
 	rand = random.randint(0,100000)
 
-	model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'before')
+	#model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'before')
 
 	best_model = None
 	for epoch in range(config["num_epochs"]):
@@ -725,14 +810,16 @@ configs = [config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig]
 print configs
 
 mode = args.mode
-if mode not in ['PhantomDG', 'PhantomD', 'PhantomBlind', 'PhantomICL', 'MFN', 'PhantomIntermD', 'PhantomIntermInputD']:
+if mode not in ['PhantomDG', 'PhantomD', 'PhantomBlind', 'PhantomICL', 'MFN', 'PhantomIntermD', 'PhantomIntermInputD', 'MT2', 'MT3', 'MT3+']:
 	print "Mode argument is invalid!"
 	sys.exit(0)
 
 save_path = PROJECT_DIR + 'gridsearch_models_mosei_200epochs/'+mode
-if mode in ['PhantomD', 'PhantomDG', 'PhantomIntermD', 'PhantomIntermInputD']:
+#if mode == 'PhantomDG':
+#	save_path += '_new'
+if mode in ['PhantomD', 'PhantomDG', 'PhantomIntermD', 'PhantomIntermInputD', 'MT2']:
 	save_path += '_D'+str(args.modality_drop)
-if mode == 'PhantomDG':
+if mode in ['PhantomDG', 'MT2', 'MT3', 'MT3+']:
 	save_path += '_G'+str(args.g_loss_weight)
 print "Save path: " + save_path
 

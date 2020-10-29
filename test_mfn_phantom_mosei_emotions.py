@@ -244,6 +244,7 @@ class MFNPhantom(nn.Module):
 
 		self.mode = mode
 
+
 	def forward(self,x_l, x_a, x_v, isPhantom=False, avZero=False, intermPhantom=False, phantomInput=False, mode=None):
 
 		'''
@@ -414,7 +415,6 @@ class MFNPhantom(nn.Module):
 		last_hs = torch.cat([last_h_l,last_h_a,last_h_v,last_mem], dim=1)
 		output = self.out_fc2(self.out_dropout(F.relu(self.out_fc1(last_hs))))
 		return output, pred_x_a, pred_x_v
-
 
 
 	def calc_phantom_loss(self, batchsize, X_test, y_test, mode='before'):
@@ -620,12 +620,6 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 	#model = EFLSTM(d,h,output_dim,dropout)
 	model = MFNPhantom(config,NN1Config,NN2Config,gamma1Config,gamma2Config,outConfig, mode)
 
-	#optimizer = optim.SGD(model.parameters(),lr=config["lr"],momentum=config["momentum"])
-
-	# optimizer = optim.SGD([
-	#                 {'params':model.lstm_l.parameters(), 'lr':config["lr"]},
-	#                 {'params':model.classifier.parameters(), 'lr':config["lr"]}
-	#             ], momentum=0.9)
 
 	device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 	model = model.to(device)
@@ -639,30 +633,10 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 
 	# model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'before')
 
-	best_model = None
-	for epoch in range(config["num_epochs"]):
-		train_loss = model.train_epoch(config["batchsize"], X_train, y_train, optimizer)
-		train_loss = model.evaluate(X_train, y_train)
-		valid_loss = model.evaluate(X_valid, y_valid)
-		test_loss = model.evaluate(X_test, y_test)
-		scheduler.step(valid_loss)
-		print 'Epoch', epoch, ':\t Training loss:', train_loss
-		if valid_loss <= best_valid:
-			# save model
-			print 'Epoch', epoch, ':\t Validation loss:', valid_loss, 'saving model'
-			best_valid = valid_loss
-			torch.save(model, '{}/mfn_phantom_{}.pt'.format(save_path, args.hparam_iter))
-			#best_model = copy.deepcopy(model).cpu().gpu()
-		else:
-			print 'Epoch', epoch, ':\t Validation loss:', valid_loss
-		print 'Epoch', epoch, ':\t Test loss:', test_loss
-
 
 	print 'model number is:', rand
 	model = torch.load('{}/mfn_phantom_{}.pt'.format(save_path, args.hparam_iter))
-	#model = copy.deepcopy(best_model).cpu().gpu()
-
-	# model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'after')
+	model.eval()
 
 	for split in ['train', 'valid', 'test']:
 
@@ -683,21 +657,9 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 		binary_labels = np.where(y > 0.05, 1, 0)
 		# print(binary_preds.shape, binary_labels.shape)
 		for i in range(6):
-		    print split, "f1", i, ":", f1_score(binary_labels[:,i], binary_preds[:,i])	
-			#print split, "mae: ", mae
-			#corr = np.corrcoef(predictions,y)[0][1]
-			#print split, "corr: ", corr
-			#mult = round(sum(np.round(predictions)==np.round(y))/float(len(y)),5)
-			#print split, "mult_acc: ", mult
-			#f_score = round(f1_score(np.round(predictions),np.round(y),average='weighted'),5)
-			#print split, "mult f_score: ", f_score
-			#true_label = (y >= 0)
-			#predicted_label = (predictions >= 0)
-			#print split, "Confusion Matrix :"
-			#print confusion_matrix(true_label, predicted_label)
-			#print split, "Classification Report :"
-			#print classification_report(true_label, predicted_label, digits=5)
-			#print split, "Accuracy ", accuracy_score(true_label, predicted_label)
+		    # print split, "f1", i, ":", f1_score(binary_labels[:,i], binary_preds[:,i])	
+		    corr = np.corrcoef(predictions[:,i],y[:,i])[0][1]
+		    print split, "corr", i, ":", corr
 	sys.stdout.flush()
 
 def test(X_test, y_test, metric):

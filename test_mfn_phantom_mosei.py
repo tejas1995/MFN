@@ -124,22 +124,22 @@ def get_data(args,config):
 	return X_train, y_train, X_valid, y_valid, X_test, y_test
 
 def load_saved_data():
-	h5f = h5py.File(PROJECT_DIR+'mosei_emotions_data/X_train.h5','r')
+	h5f = h5py.File(PROJECT_DIR+'mosei_data/X_train.h5','r')
 	X_train = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File(PROJECT_DIR+'mosei_emotions_data/y_train.h5','r')
+	h5f = h5py.File(PROJECT_DIR+'mosei_data/y_train.h5','r')
 	y_train = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File(PROJECT_DIR+'mosei_emotions_data/X_valid.h5','r')
+	h5f = h5py.File(PROJECT_DIR+'mosei_data/X_valid.h5','r')
 	X_valid = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File(PROJECT_DIR+'mosei_emotions_data/y_valid.h5','r')
+	h5f = h5py.File(PROJECT_DIR+'mosei_data/y_valid.h5','r')
 	y_valid = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File(PROJECT_DIR+'mosei_emotions_data/X_test.h5','r')
+	h5f = h5py.File(PROJECT_DIR+'mosei_data/X_test.h5','r')
 	X_test = h5f['data'][:]
 	h5f.close()
-	h5f = h5py.File(PROJECT_DIR+'mosei_emotions_data/y_test.h5','r')
+	h5f = h5py.File(PROJECT_DIR+'mosei_data/y_test.h5','r')
 	y_test = h5f['data'][:]
 	h5f.close()
 	return X_train, y_train, X_valid, y_valid, X_test, y_test
@@ -162,7 +162,7 @@ class MFNPhantom(nn.Module):
 		total_h_dim = self.dh_l+self.dh_a+self.dh_v
 		self.mem_dim = config["memsize"]
 		window_dim = config["windowsize"]
-		output_dim = 6
+		output_dim = 1
 		attInShape = total_h_dim*window_dim
 		gammaInShape = attInShape+self.mem_dim
 		final_out = total_h_dim+self.mem_dim
@@ -243,6 +243,7 @@ class MFNPhantom(nn.Module):
 		self.phantom_a_criterion = nn.L1Loss()
 
 		self.mode = mode
+
 
 	def forward(self,x_l, x_a, x_v, isPhantom=False, avZero=False, intermPhantom=False, phantomInput=False, mode=None):
 
@@ -416,11 +417,12 @@ class MFNPhantom(nn.Module):
 		return output, pred_x_a, pred_x_v
 
 
+	def calc_phantom_corr(self, batchsize, X_test, y_test, mode='before'):
 
-	def calc_phantom_loss(self, batchsize, X_test, y_test, mode='before'):
-
-		total_loss_a = [0.0]*74
-		total_loss_v = [0.0]*35
+		phantom_a_reps = []
+		phantom_v_reps = []
+		actual_a_reps = []
+		actual_v_reps = []
 
 		self.eval()
 		total_n = X_test.shape[1]
@@ -440,22 +442,25 @@ class MFNPhantom(nn.Module):
 
 			predictions, pred_x_a, pred_x_v = self.forward(x_l, x_a, x_v, True)
 
-			for i in range(74):
-				total_loss_a[i] += self.g_loss_weight*self.phantom_a_criterion(pred_x_a[:,:,i], x_a[:,:,i]).item()/74
-			for i in range(35):
-				total_loss_v[i] += self.g_loss_weight*self.phantom_v_criterion(pred_x_v[:,:,i], x_v[:,:,i]).item()/35
+			phantom_a_reps.append(pred_x_a.permute(2, 0, 1).reshape(pred_x_a.shape[2], -1).cpu().data.numpy())
+			actual_a_reps.append(x_a.permute(2, 0, 1).reshape(x_a.shape[2], -1).cpu().data.numpy())
+			phantom_v_reps.append(pred_x_v.permute(2, 0, 1).reshape(pred_x_v.shape[2], -1).cpu().data.numpy())
+			actual_v_reps.append(x_v.permute(2, 0, 1).reshape(x_v.shape[2], -1).cpu().data.numpy())
+
+
+		phantom_a_reps = np.concatenate(phantom_a_reps, axis=1)
+		actual_a_reps = np.concatenate(actual_a_reps, axis=1)
+		phantom_v_reps = np.concatenate(phantom_v_reps, axis=1)
+		actual_v_reps = np.concatenate(actual_v_reps, axis=1)
+
 
 		audio_loss = 0.0
 		video_loss = 0.0
 		for i in range(74):
-			print mode, "audio loss dim", i, ":", total_loss_a[i]
-			audio_loss += total_loss_a[i]
+			print "audio corr dim", i, ":", np.corrcoef(phantom_a_reps[i], actual_a_reps)[0][1]
 		for i in range(35):
-			print mode, "video loss dim", i, ":", total_loss_v[i]
-			video_loss += total_loss_v[i]
+			print "video corr dim", i, ":", np.corrcoef(phantom_a_reps[i], actual_a_reps)[0][1]
 
-		print mode, "loss a:", audio_loss
-		print mode, "loss v:", video_loss
 
 
 	def train_epoch(self, batchsize, X_train, y_train, optimizer):
@@ -521,6 +526,7 @@ class MFNPhantom(nn.Module):
 			epoch_loss += loss.item()
 		return epoch_loss / num_batches
 
+
 	def evaluate(self, X_valid, y_valid):
 		epoch_loss = 0
 		self.eval()
@@ -559,6 +565,7 @@ class MFNPhantom(nn.Module):
 
 			epoch_loss = self.criterion(predictions, batch_y)
 		return epoch_loss.item()
+
 
 	def predict(self, X_test):
 		epoch_loss = 0
@@ -637,32 +644,14 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 	best_valid = 999999.0
 	rand = random.randint(0,100000)
 
-	# model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'before')
-
-	best_model = None
-	for epoch in range(config["num_epochs"]):
-		train_loss = model.train_epoch(config["batchsize"], X_train, y_train, optimizer)
-		train_loss = model.evaluate(X_train, y_train)
-		valid_loss = model.evaluate(X_valid, y_valid)
-		test_loss = model.evaluate(X_test, y_test)
-		scheduler.step(valid_loss)
-		print 'Epoch', epoch, ':\t Training loss:', train_loss
-		if valid_loss <= best_valid:
-			# save model
-			print 'Epoch', epoch, ':\t Validation loss:', valid_loss, 'saving model'
-			best_valid = valid_loss
-			torch.save(model, '{}/mfn_phantom_{}.pt'.format(save_path, args.hparam_iter))
-			#best_model = copy.deepcopy(model).cpu().gpu()
-		else:
-			print 'Epoch', epoch, ':\t Validation loss:', valid_loss
-		print 'Epoch', epoch, ':\t Test loss:', test_loss
 
 
 	print 'model number is:', rand
 	model = torch.load('{}/mfn_phantom_{}.pt'.format(save_path, args.hparam_iter))
+	model.eval()
 	#model = copy.deepcopy(best_model).cpu().gpu()
 
-	# model.calc_phantom_loss(config["batchsize"], X_test, y_test, 'after')
+	#model.calc_phantom_corr(config["batchsize"], X_valid, y_valid, 'after')
 
 	for split in ['train', 'valid', 'test']:
 
@@ -675,29 +664,20 @@ def train_mfn_phantom(X_train, y_train, X_valid, y_valid, X_test, y_test, config
 
 		predictions = model.predict(X)
 		mae = np.mean(np.absolute(predictions-y))
-		for i in range(6):
-		    mae = np.mean(np.absolute(predictions[:,i]-y[:,i]))
-		    print split, "mae", i, ":", mae
-
-		binary_preds = np.where(predictions > 0.05, 1, 0)
-		binary_labels = np.where(y > 0.05, 1, 0)
-		# print(binary_preds.shape, binary_labels.shape)
-		for i in range(6):
-		    print split, "f1", i, ":", f1_score(binary_labels[:,i], binary_preds[:,i])	
-			#print split, "mae: ", mae
-			#corr = np.corrcoef(predictions,y)[0][1]
-			#print split, "corr: ", corr
-			#mult = round(sum(np.round(predictions)==np.round(y))/float(len(y)),5)
-			#print split, "mult_acc: ", mult
-			#f_score = round(f1_score(np.round(predictions),np.round(y),average='weighted'),5)
-			#print split, "mult f_score: ", f_score
-			#true_label = (y >= 0)
-			#predicted_label = (predictions >= 0)
-			#print split, "Confusion Matrix :"
-			#print confusion_matrix(true_label, predicted_label)
-			#print split, "Classification Report :"
-			#print classification_report(true_label, predicted_label, digits=5)
-			#print split, "Accuracy ", accuracy_score(true_label, predicted_label)
+		print split, "mae: ", mae
+		corr = np.corrcoef(predictions,y)[0][1]
+		print split, "corr: ", corr
+		mult = round(sum(np.round(predictions)==np.round(y))/float(len(y)),5)
+		#print split, "mult_acc: ", mult
+		f_score = round(f1_score(np.round(predictions),np.round(y),average='weighted'),5)
+		#print split, "mult f_score: ", f_score
+		true_label = (y >= 0)
+		predicted_label = (predictions >= 0)
+		#print split, "Confusion Matrix :"
+		#print confusion_matrix(true_label, predicted_label)
+		#print split, "Classification Report :"
+		#print classification_report(true_label, predicted_label, digits=5)
+		#print split, "Accuracy ", accuracy_score(true_label, predicted_label)
 	sys.stdout.flush()
 
 def test(X_test, y_test, metric):
@@ -791,10 +771,10 @@ print "Hparam iter:", i
 
 config = dict()
 config["input_dims"] = [300,74,35]
-config["memsize"] = 256
+config["memsize"] = 128
 config["windowsize"] = 2
 config["batchsize"] = 32
-config["num_epochs"] = 50
+config["num_epochs"] = 200
 config["lr"] = 0.00001
 config["momentum"] = 0.9
 
@@ -835,7 +815,7 @@ if mode not in ['PhantomDG', 'PhantomD', 'PhantomBlind', 'PhantomICL', 'MFN', 'P
 	print "Mode argument is invalid!"
 	sys.exit(0)
 
-save_path = PROJECT_DIR + 'gridsearch_models_mosei_emotions/'+mode
+save_path = PROJECT_DIR + 'gridsearch_models_mosei_200epochs/'+mode
 #if mode == 'PhantomDG':
 #	save_path += '_new'
 if mode in ['PhantomD', 'PhantomDG', 'PhantomIntermD', 'PhantomIntermInputD', 'MT2']:
